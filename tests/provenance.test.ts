@@ -12,7 +12,7 @@
  */
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { ENGINE_CONFIG, hashObject, type EngineConfig } from "../src/lib/config.js";
+import { ENGINE_CONFIG, hashObject, SUBFIELD_CONFIG, type EngineConfig } from "../src/lib/index.js";
 
 const ARTIFACTS = [
   "public/calibration.json",
@@ -51,5 +51,13 @@ describe("config provenance", () => {
       recommended: EngineConfig;
     };
     expect(raw.recommended).toEqual(ENGINE_CONFIG);
+  });
+
+  it("subfield-benchmark.json carries the subfield experiment config, not the field config", () => {
+    const { configHash, config } = loadConfigHash("public/subfield-benchmark.json");
+    expect(configHash).toBe(hashObject(SUBFIELD_CONFIG));
+    expect(config).toEqual(SUBFIELD_CONFIG);
+    // Guard against config confusion: the subfield hash must differ from the field hash.
+    expect(configHash).not.toBe(hashObject(ENGINE_CONFIG));
   });
 });

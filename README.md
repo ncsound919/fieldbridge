@@ -42,9 +42,14 @@ is the sparse region of the discipline×discipline matrix.
 - `src/lib/benchmark.ts` + `src/benchmark-run.ts` — **rolling-origin prediction
   benchmark** (held-out windows, explicit baselines, bootstrap CIs,
   pre-registered verdict). Output: `public/benchmark.json`.
-- `tests/` — vitest suite (77 tests), including config-provenance contract
+  `src/subfield-run.ts` runs the same benchmark at OpenAlex subfield
+  granularity (228 units, ~26k pairs) — output: `public/subfield-benchmark.json`.
+- `src/lib/diversity.ts` — **canonical interdisciplinarity indices** (Rao-Stirling,
+  Leydesdorff DIV with variety/balance/disparity components, Shannon, Simpson,
+  Gini) + bootstrap CI for RS, per field per year in the artifact dashboard.
+- `tests/` — vitest suite (94 tests), including config-provenance contract
   tests that fail CI when a published artifact's config hash differs from the
-  runtime config.
+  runtime config (field or subfield experiment).
 - `samples/selftest_snapshot.json` — synthetic fixture for running without API
   keys.
 - `public/fieldbridge-matrix.json` — the latest computed artifact (from the

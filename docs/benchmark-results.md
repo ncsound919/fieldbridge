@@ -93,6 +93,51 @@ benchmark after any formula change; the benchmark verdict is the gate.
   construction and are NOT a size signal), and the full engine.
 - Bridge threshold pre-registered at 1.0%, swept 0.5%/1%/2% for robustness
   (`public/benchmark.json`).
-- Reproduce: `npm run benchmark -- --snapshot python/phase1/phase1_results.json --out public/benchmark.json`
+- ## Subfield-level benchmark (Phase 2): granularity confirmed, formula still loses
+
+The literature hypothesis — prediction is dead at 26-field granularity (325
+pairs) and viable at subfield granularity (~25k pairs) — was tested on our own
+data: 228 OpenAlex subfields, 25,878 pairs, identical rolling-origin benchmark
+with a scale-adjusted experiment config (`SUBFIELD_CONFIG`, own hash
+`d6fee62f`; signal thresholds unchanged). Both windows are held-out (the
+subfield config was never calibrated), so the verdict actually evaluates:
+**FAIL** — but by the narrowest honest margin.
+
+| window | engine lift | engine 95% CI | best baseline |
+|---|---|---|---|
+| scored@2017 → 2020 | 2.29× | 1.69 .. 3.25 (passes > 1.10) | momentum 3.82× |
+| scored@2020 → 2023 | 1.59× | 0.98 .. 2.38 (misses) | momentum 3.52× |
+| pooled | 1.89× | — | — |
+
+Full subfield baselines (primary threshold 1.0%):
+
+| baseline | 2017→2020 lift | 2020→2023 lift |
+|---|---|---|
+| **highest-crossflow-growth (momentum)** | **3.82×** | **3.52×** |
+| highest-simgrowth / ablation-gap-only | 2.84× | 2.05× |
+| full (engine) | 2.29× | 1.59× |
+| field-size (ref-volume) | 1.20× | 1.82× |
+| random | 1.31× | 1.02× |
+| highest-diversity-growth | 0.66× | 0.68× |
+| lowest-crossflow / ablation-sim-only | 0.11× | 0.11× |
+
+Findings:
+1. **Granularity hypothesis CONFIRMED.** Eligible pairs 150 → 1,130; the
+   2017→2020 window PASSES the pre-registered threshold decisively (lower CI
+   1.69 > 1.10). Pooled held-out lift 1.89×.
+2. **Formula ranking UNCHANGED.** Momentum and semantic growth beat the
+   dual-signal score on both windows, at both granularities. The
+   citation-gap term adds no predictive lift (ablation-gap-only ≥ full).
+3. **Diversity growth is anti-predictive** (0.66×/0.68×): pairs whose endpoint
+   fields are diversifying are LESS likely to bridge. Canonical metrics
+   describe; they do not forecast.
+4. **Verdict FAIL is correct and narrow:** one window passes decisively, the
+   second misses with lower CI 0.98 (just under 1.0). The trajectory is
+   PENDING (field, underpowered) → FAIL-with-one-pass (subfield, powered).
+   The gated next step is a formula revision (momentum × semantic evidence),
+   re-run through `npm run benchmark:subfield` against fresh snapshot years.
+
+Reproduce (field): `npm run benchmark -- --snapshot python/phase1/phase1_results.json --out public/benchmark.json`
+Reproduce (subfield): `npm run benchmark:subfield -- --snapshot python/phase1/phase1_subfield_results.json --out public/subfield-benchmark.json`
 - Config provenance enforced by `tests/provenance.test.ts` — any artifact
   whose config hash differs from `ENGINE_CONFIG` fails CI.

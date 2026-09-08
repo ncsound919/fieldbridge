@@ -1,0 +1,1391 @@
+{
+  "manifest": {
+    "engine": "fieldbridge@0.2.0-subfield",
+    "configHash": "d6fee62f",
+    "config": {
+      "version": "0.2.0-subfield",
+      "sampleSize": 500,
+      "windowYears": 5,
+      "topKeywords": 200,
+      "minCoverage": 0.3,
+      "minPubs": 5,
+      "minCitationGap": 0.7,
+      "minSimGrowth": 0.05,
+      "densityNorm": 0.4,
+      "topK": 50
+    },
+    "units": 228,
+    "unitLevel": "subfield",
+    "snapshot": "python/phase1/phase1_subfield_results.json",
+    "method": "rolling-origin at subfield granularity; all windows held-out (subfield config never calibrated); ground truth = cross-flow >= threshold at horizon",
+    "primaryThreshold": 0.01,
+    "thresholdsSwept": [
+      0.005,
+      0.01,
+      0.02
+    ],
+    "bootstrap": {
+      "draws": 2000,
+      "type": "pair-resampling over eligible population",
+      "seed": "deterministic per threshold"
+    },
+    "generatedAt": "2026-09-08T06:08:04.184Z"
+  },
+  "units": 228,
+  "windows": [
+    {
+      "current": 2017,
+      "prior": 2014,
+      "horizon": 2020,
+      "heldOut": true
+    },
+    {
+      "current": 2020,
+      "prior": 2017,
+      "horizon": 2023,
+      "heldOut": true
+    }
+  ],
+  "thresholds": {
+    "0.005": {
+      "windows": [
+        {
+          "current": 2017,
+          "prior": 2014,
+          "horizon": 2020,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 1130,
+          "surfaced": 50,
+          "bridged": 26,
+          "hitRate": 0.52,
+          "baseRate": 0.2531,
+          "lift": 2.0545,
+          "precisionAtK": [
+            0,
+            0.5,
+            0.6667,
+            0.75,
+            0.6,
+            0.6667,
+            0.7143,
+            0.75,
+            0.7778,
+            0.8,
+            0.7273,
+            0.75,
+            0.7692,
+            0.7143,
+            0.6667,
+            0.6875,
+            0.6471,
+            0.6667,
+            0.6842,
+            0.7,
+            0.6667,
+            0.6818,
+            0.6522,
+            0.625,
+            0.6,
+            0.5769,
+            0.5556,
+            0.5714,
+            0.5862,
+            0.6,
+            0.5806,
+            0.5938,
+            0.6061,
+            0.6176,
+            0.6,
+            0.5833,
+            0.5676,
+            0.5789,
+            0.5641,
+            0.575,
+            0.561,
+            0.5476,
+            0.5349,
+            0.5455,
+            0.5333,
+            0.5435,
+            0.5319,
+            0.5208,
+            0.5102,
+            0.52
+          ],
+          "liftCI": {
+            "lower": 1.5787,
+            "upper": 2.6763,
+            "mean": 2.1092,
+            "median": 2.1023
+          },
+          "hitRateCI": {
+            "lower": 0.4,
+            "upper": 0.68,
+            "mean": 0.5336,
+            "median": 0.54
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 50,
+              "bridged": 16,
+              "hitRate": 0.32,
+              "baseRate": 0.2531,
+              "lift": 1.2643
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 50,
+              "bridged": 5,
+              "hitRate": 0.1,
+              "baseRate": 0.2531,
+              "lift": 0.3951
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 50,
+              "bridged": 30,
+              "hitRate": 0.6,
+              "baseRate": 0.2531,
+              "lift": 2.3706
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 50,
+              "bridged": 37,
+              "hitRate": 0.74,
+              "baseRate": 0.2531,
+              "lift": 2.9238
+            },
+            {
+              "name": "highest-diversity-growth",
+              "surfaced": 50,
+              "bridged": 11,
+              "hitRate": 0.22,
+              "baseRate": 0.2531,
+              "lift": 0.8692
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 50,
+              "bridged": 30,
+              "hitRate": 0.6,
+              "baseRate": 0.2531,
+              "lift": 2.3706
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 50,
+              "bridged": 5,
+              "hitRate": 0.1,
+              "baseRate": 0.2531,
+              "lift": 0.3951
+            },
+            {
+              "name": "field-size",
+              "surfaced": 50,
+              "bridged": 13,
+              "hitRate": 0.26,
+              "baseRate": 0.2531,
+              "lift": 1.0273
+            },
+            {
+              "name": "full",
+              "surfaced": 50,
+              "bridged": 26,
+              "hitRate": 0.52,
+              "baseRate": 0.2531,
+              "lift": 2.0545
+            }
+          ]
+        },
+        {
+          "current": 2020,
+          "prior": 2017,
+          "horizon": 2023,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 1358,
+          "surfaced": 50,
+          "bridged": 23,
+          "hitRate": 0.46,
+          "baseRate": 0.2784,
+          "lift": 1.6526,
+          "precisionAtK": [
+            0,
+            0,
+            0,
+            0,
+            0.2,
+            0.3333,
+            0.2857,
+            0.375,
+            0.4444,
+            0.4,
+            0.3636,
+            0.3333,
+            0.3846,
+            0.3571,
+            0.4,
+            0.375,
+            0.3529,
+            0.3889,
+            0.4211,
+            0.4,
+            0.381,
+            0.4091,
+            0.4348,
+            0.4167,
+            0.4,
+            0.4231,
+            0.4444,
+            0.4643,
+            0.4828,
+            0.4667,
+            0.4516,
+            0.4688,
+            0.4848,
+            0.4706,
+            0.4857,
+            0.5,
+            0.4865,
+            0.4737,
+            0.4872,
+            0.5,
+            0.4878,
+            0.5,
+            0.4884,
+            0.4773,
+            0.4667,
+            0.4565,
+            0.4681,
+            0.4792,
+            0.4694,
+            0.46
+          ],
+          "liftCI": {
+            "lower": 1.2633,
+            "upper": 2.2323,
+            "mean": 1.7327,
+            "median": 1.7234
+          },
+          "hitRateCI": {
+            "lower": 0.34,
+            "upper": 0.62,
+            "mean": 0.4819,
+            "median": 0.48
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 50,
+              "bridged": 20,
+              "hitRate": 0.4,
+              "baseRate": 0.2784,
+              "lift": 1.437
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 50,
+              "bridged": 3,
+              "hitRate": 0.06,
+              "baseRate": 0.2784,
+              "lift": 0.2156
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 50,
+              "bridged": 28,
+              "hitRate": 0.56,
+              "baseRate": 0.2784,
+              "lift": 2.0119
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 50,
+              "bridged": 38,
+              "hitRate": 0.76,
+              "baseRate": 0.2784,
+              "lift": 2.7304
+            },
+            {
+              "name": "highest-diversity-growth",
+              "surfaced": 50,
+              "bridged": 9,
+              "hitRate": 0.18,
+              "baseRate": 0.2784,
+              "lift": 0.6467
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 50,
+              "bridged": 28,
+              "hitRate": 0.56,
+              "baseRate": 0.2784,
+              "lift": 2.0119
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 50,
+              "bridged": 3,
+              "hitRate": 0.06,
+              "baseRate": 0.2784,
+              "lift": 0.2156
+            },
+            {
+              "name": "field-size",
+              "surfaced": 50,
+              "bridged": 25,
+              "hitRate": 0.5,
+              "baseRate": 0.2784,
+              "lift": 1.7963
+            },
+            {
+              "name": "full",
+              "surfaced": 50,
+              "bridged": 23,
+              "hitRate": 0.46,
+              "baseRate": 0.2784,
+              "lift": 1.6526
+            }
+          ]
+        }
+      ],
+      "pooled": {
+        "name": "pooled-held-out",
+        "surfaced": 100,
+        "bridged": 49,
+        "hitRate": 0.49,
+        "baseRate": 0.2752,
+        "lift": 1.7807
+      },
+      "successThreshold": {
+        "lowerCILift": 1.1,
+        "consecutiveWindows": 2
+      },
+      "verdict": {
+        "passed": true,
+        "state": "PASS",
+        "reason": "lower 95% CI of lift > 1.1 on 2 consecutive held-out windows"
+      },
+      "config": {
+        "version": "0.2.0-subfield",
+        "sampleSize": 500,
+        "windowYears": 5,
+        "topKeywords": 200,
+        "minCoverage": 0.3,
+        "minPubs": 5,
+        "minCitationGap": 0.7,
+        "minSimGrowth": 0.05,
+        "densityNorm": 0.4,
+        "topK": 50
+      }
+    },
+    "0.01": {
+      "windows": [
+        {
+          "current": 2017,
+          "prior": 2014,
+          "horizon": 2020,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 1130,
+          "surfaced": 50,
+          "bridged": 21,
+          "hitRate": 0.42,
+          "baseRate": 0.1832,
+          "lift": 2.2928,
+          "precisionAtK": [
+            0,
+            0.5,
+            0.6667,
+            0.75,
+            0.6,
+            0.6667,
+            0.7143,
+            0.75,
+            0.7778,
+            0.8,
+            0.7273,
+            0.75,
+            0.7692,
+            0.7143,
+            0.6667,
+            0.6875,
+            0.6471,
+            0.6667,
+            0.6842,
+            0.65,
+            0.619,
+            0.5909,
+            0.5652,
+            0.5417,
+            0.52,
+            0.5,
+            0.4815,
+            0.5,
+            0.5172,
+            0.5333,
+            0.5161,
+            0.5313,
+            0.5152,
+            0.5294,
+            0.5143,
+            0.5,
+            0.4865,
+            0.5,
+            0.4872,
+            0.5,
+            0.4878,
+            0.4762,
+            0.4651,
+            0.4773,
+            0.4667,
+            0.4565,
+            0.4468,
+            0.4375,
+            0.4286,
+            0.42
+          ],
+          "liftCI": {
+            "lower": 1.6866,
+            "upper": 3.2451,
+            "mean": 2.4558,
+            "median": 2.4493
+          },
+          "hitRateCI": {
+            "lower": 0.3,
+            "upper": 0.6,
+            "mean": 0.4495,
+            "median": 0.44
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 50,
+              "bridged": 12,
+              "hitRate": 0.24,
+              "baseRate": 0.1832,
+              "lift": 1.3101
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 50,
+              "bridged": 1,
+              "hitRate": 0.02,
+              "baseRate": 0.1832,
+              "lift": 0.1092
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 50,
+              "bridged": 26,
+              "hitRate": 0.52,
+              "baseRate": 0.1832,
+              "lift": 2.8386
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 50,
+              "bridged": 35,
+              "hitRate": 0.7,
+              "baseRate": 0.1832,
+              "lift": 3.8213
+            },
+            {
+              "name": "highest-diversity-growth",
+              "surfaced": 50,
+              "bridged": 6,
+              "hitRate": 0.12,
+              "baseRate": 0.1832,
+              "lift": 0.6551
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 50,
+              "bridged": 26,
+              "hitRate": 0.52,
+              "baseRate": 0.1832,
+              "lift": 2.8386
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 50,
+              "bridged": 1,
+              "hitRate": 0.02,
+              "baseRate": 0.1832,
+              "lift": 0.1092
+            },
+            {
+              "name": "field-size",
+              "surfaced": 50,
+              "bridged": 11,
+              "hitRate": 0.22,
+              "baseRate": 0.1832,
+              "lift": 1.201
+            },
+            {
+              "name": "full",
+              "surfaced": 50,
+              "bridged": 21,
+              "hitRate": 0.42,
+              "baseRate": 0.1832,
+              "lift": 2.2928
+            }
+          ]
+        },
+        {
+          "current": 2020,
+          "prior": 2017,
+          "horizon": 2023,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 1358,
+          "surfaced": 50,
+          "bridged": 14,
+          "hitRate": 0.28,
+          "baseRate": 0.176,
+          "lift": 1.591,
+          "precisionAtK": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.125,
+            0.2222,
+            0.2,
+            0.1818,
+            0.1667,
+            0.2308,
+            0.2143,
+            0.2667,
+            0.25,
+            0.2353,
+            0.2222,
+            0.2105,
+            0.2,
+            0.1905,
+            0.1818,
+            0.2174,
+            0.2083,
+            0.2,
+            0.2308,
+            0.2593,
+            0.2857,
+            0.2759,
+            0.2667,
+            0.2581,
+            0.2813,
+            0.2727,
+            0.2647,
+            0.2857,
+            0.3056,
+            0.2973,
+            0.2895,
+            0.2821,
+            0.3,
+            0.2927,
+            0.3095,
+            0.3023,
+            0.2955,
+            0.2889,
+            0.2826,
+            0.2979,
+            0.2917,
+            0.2857,
+            0.28
+          ],
+          "liftCI": {
+            "lower": 0.9817,
+            "upper": 2.3765,
+            "mean": 1.6477,
+            "median": 1.6427
+          },
+          "hitRateCI": {
+            "lower": 0.18,
+            "upper": 0.42,
+            "mean": 0.29,
+            "median": 0.28
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 50,
+              "bridged": 9,
+              "hitRate": 0.18,
+              "baseRate": 0.176,
+              "lift": 1.0228
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 50,
+              "bridged": 1,
+              "hitRate": 0.02,
+              "baseRate": 0.176,
+              "lift": 0.1136
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 50,
+              "bridged": 18,
+              "hitRate": 0.36,
+              "baseRate": 0.176,
+              "lift": 2.0455
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 50,
+              "bridged": 31,
+              "hitRate": 0.62,
+              "baseRate": 0.176,
+              "lift": 3.5228
+            },
+            {
+              "name": "highest-diversity-growth",
+              "surfaced": 50,
+              "bridged": 6,
+              "hitRate": 0.12,
+              "baseRate": 0.176,
+              "lift": 0.6818
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 50,
+              "bridged": 18,
+              "hitRate": 0.36,
+              "baseRate": 0.176,
+              "lift": 2.0455
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 50,
+              "bridged": 1,
+              "hitRate": 0.02,
+              "baseRate": 0.176,
+              "lift": 0.1136
+            },
+            {
+              "name": "field-size",
+              "surfaced": 50,
+              "bridged": 16,
+              "hitRate": 0.32,
+              "baseRate": 0.176,
+              "lift": 1.8182
+            },
+            {
+              "name": "full",
+              "surfaced": 50,
+              "bridged": 14,
+              "hitRate": 0.28,
+              "baseRate": 0.176,
+              "lift": 1.591
+            }
+          ]
+        }
+      ],
+      "pooled": {
+        "name": "pooled-held-out",
+        "surfaced": 100,
+        "bridged": 35,
+        "hitRate": 0.35,
+        "baseRate": 0.1848,
+        "lift": 1.8936
+      },
+      "successThreshold": {
+        "lowerCILift": 1.1,
+        "consecutiveWindows": 2
+      },
+      "verdict": {
+        "passed": false,
+        "state": "FAIL",
+        "reason": "lower 95% CI of lift <= 1.1 on held-out windows (max run 1)"
+      },
+      "config": {
+        "version": "0.2.0-subfield",
+        "sampleSize": 500,
+        "windowYears": 5,
+        "topKeywords": 200,
+        "minCoverage": 0.3,
+        "minPubs": 5,
+        "minCitationGap": 0.7,
+        "minSimGrowth": 0.05,
+        "densityNorm": 0.4,
+        "topK": 50
+      }
+    },
+    "0.02": {
+      "windows": [
+        {
+          "current": 2017,
+          "prior": 2014,
+          "horizon": 2020,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 1130,
+          "surfaced": 50,
+          "bridged": 16,
+          "hitRate": 0.32,
+          "baseRate": 0.1088,
+          "lift": 2.9398,
+          "precisionAtK": [
+            0,
+            0.5,
+            0.6667,
+            0.75,
+            0.6,
+            0.5,
+            0.5714,
+            0.625,
+            0.6667,
+            0.7,
+            0.6364,
+            0.6667,
+            0.6923,
+            0.6429,
+            0.6,
+            0.625,
+            0.5882,
+            0.6111,
+            0.5789,
+            0.55,
+            0.5238,
+            0.5,
+            0.4783,
+            0.4583,
+            0.44,
+            0.4231,
+            0.4074,
+            0.4286,
+            0.4483,
+            0.4667,
+            0.4516,
+            0.4688,
+            0.4545,
+            0.4412,
+            0.4286,
+            0.4167,
+            0.4054,
+            0.4211,
+            0.4103,
+            0.4,
+            0.3902,
+            0.381,
+            0.3721,
+            0.3636,
+            0.3556,
+            0.3478,
+            0.3404,
+            0.3333,
+            0.3265,
+            0.32
+          ],
+          "liftCI": {
+            "lower": 1.9796,
+            "upper": 4.4098,
+            "mean": 3.1506,
+            "median": 3.1389
+          },
+          "hitRateCI": {
+            "lower": 0.22,
+            "upper": 0.48,
+            "mean": 0.3421,
+            "median": 0.34
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 50,
+              "bridged": 8,
+              "hitRate": 0.16,
+              "baseRate": 0.1088,
+              "lift": 1.4699
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 50,
+              "bridged": 0,
+              "hitRate": 0,
+              "baseRate": 0.1088,
+              "lift": 0
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 50,
+              "bridged": 21,
+              "hitRate": 0.42,
+              "baseRate": 0.1088,
+              "lift": 3.8585
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 50,
+              "bridged": 27,
+              "hitRate": 0.54,
+              "baseRate": 0.1088,
+              "lift": 4.961
+            },
+            {
+              "name": "highest-diversity-growth",
+              "surfaced": 50,
+              "bridged": 5,
+              "hitRate": 0.1,
+              "baseRate": 0.1088,
+              "lift": 0.9187
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 50,
+              "bridged": 21,
+              "hitRate": 0.42,
+              "baseRate": 0.1088,
+              "lift": 3.8585
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 50,
+              "bridged": 0,
+              "hitRate": 0,
+              "baseRate": 0.1088,
+              "lift": 0
+            },
+            {
+              "name": "field-size",
+              "surfaced": 50,
+              "bridged": 8,
+              "hitRate": 0.16,
+              "baseRate": 0.1088,
+              "lift": 1.4699
+            },
+            {
+              "name": "full",
+              "surfaced": 50,
+              "bridged": 16,
+              "hitRate": 0.32,
+              "baseRate": 0.1088,
+              "lift": 2.9398
+            }
+          ]
+        },
+        {
+          "current": 2020,
+          "prior": 2017,
+          "horizon": 2023,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 1358,
+          "surfaced": 50,
+          "bridged": 11,
+          "hitRate": 0.22,
+          "baseRate": 0.1053,
+          "lift": 2.0892,
+          "precisionAtK": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.125,
+            0.2222,
+            0.2,
+            0.1818,
+            0.1667,
+            0.2308,
+            0.2143,
+            0.2667,
+            0.25,
+            0.2353,
+            0.2222,
+            0.2105,
+            0.2,
+            0.1905,
+            0.1818,
+            0.2174,
+            0.2083,
+            0.2,
+            0.1923,
+            0.2222,
+            0.25,
+            0.2414,
+            0.2333,
+            0.2258,
+            0.25,
+            0.2424,
+            0.2353,
+            0.2571,
+            0.2778,
+            0.2703,
+            0.2632,
+            0.2564,
+            0.25,
+            0.2439,
+            0.2619,
+            0.2558,
+            0.25,
+            0.2444,
+            0.2391,
+            0.234,
+            0.2292,
+            0.2245,
+            0.22
+          ],
+          "liftCI": {
+            "lower": 1.1895,
+            "upper": 3.395,
+            "mean": 2.2062,
+            "median": 2.1874
+          },
+          "hitRateCI": {
+            "lower": 0.12,
+            "upper": 0.36,
+            "mean": 0.2326,
+            "median": 0.24
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 50,
+              "bridged": 3,
+              "hitRate": 0.06,
+              "baseRate": 0.1053,
+              "lift": 0.5698
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 50,
+              "bridged": 0,
+              "hitRate": 0,
+              "baseRate": 0.1053,
+              "lift": 0
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 50,
+              "bridged": 15,
+              "hitRate": 0.3,
+              "baseRate": 0.1053,
+              "lift": 2.849
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 50,
+              "bridged": 26,
+              "hitRate": 0.52,
+              "baseRate": 0.1053,
+              "lift": 4.9382
+            },
+            {
+              "name": "highest-diversity-growth",
+              "surfaced": 50,
+              "bridged": 2,
+              "hitRate": 0.04,
+              "baseRate": 0.1053,
+              "lift": 0.3799
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 50,
+              "bridged": 15,
+              "hitRate": 0.3,
+              "baseRate": 0.1053,
+              "lift": 2.849
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 50,
+              "bridged": 0,
+              "hitRate": 0,
+              "baseRate": 0.1053,
+              "lift": 0
+            },
+            {
+              "name": "field-size",
+              "surfaced": 50,
+              "bridged": 11,
+              "hitRate": 0.22,
+              "baseRate": 0.1053,
+              "lift": 2.0892
+            },
+            {
+              "name": "full",
+              "surfaced": 50,
+              "bridged": 11,
+              "hitRate": 0.22,
+              "baseRate": 0.1053,
+              "lift": 2.0892
+            }
+          ]
+        }
+      ],
+      "pooled": {
+        "name": "pooled-held-out",
+        "surfaced": 100,
+        "bridged": 27,
+        "hitRate": 0.27,
+        "baseRate": 0.1102,
+        "lift": 2.4493
+      },
+      "successThreshold": {
+        "lowerCILift": 1.1,
+        "consecutiveWindows": 2
+      },
+      "verdict": {
+        "passed": true,
+        "state": "PASS",
+        "reason": "lower 95% CI of lift > 1.1 on 2 consecutive held-out windows"
+      },
+      "config": {
+        "version": "0.2.0-subfield",
+        "sampleSize": 500,
+        "windowYears": 5,
+        "topKeywords": 200,
+        "minCoverage": 0.3,
+        "minPubs": 5,
+        "minCitationGap": 0.7,
+        "minSimGrowth": 0.05,
+        "densityNorm": 0.4,
+        "topK": 50
+      }
+    }
+  },
+  "primary": {
+    "windows": [
+      {
+        "current": 2017,
+        "prior": 2014,
+        "horizon": 2020,
+        "heldOut": true,
+        "calibrationWindow": false,
+        "eligible": 1130,
+        "surfaced": 50,
+        "bridged": 21,
+        "hitRate": 0.42,
+        "baseRate": 0.1832,
+        "lift": 2.2928,
+        "precisionAtK": [
+          0,
+          0.5,
+          0.6667,
+          0.75,
+          0.6,
+          0.6667,
+          0.7143,
+          0.75,
+          0.7778,
+          0.8,
+          0.7273,
+          0.75,
+          0.7692,
+          0.7143,
+          0.6667,
+          0.6875,
+          0.6471,
+          0.6667,
+          0.6842,
+          0.65,
+          0.619,
+          0.5909,
+          0.5652,
+          0.5417,
+          0.52,
+          0.5,
+          0.4815,
+          0.5,
+          0.5172,
+          0.5333,
+          0.5161,
+          0.5313,
+          0.5152,
+          0.5294,
+          0.5143,
+          0.5,
+          0.4865,
+          0.5,
+          0.4872,
+          0.5,
+          0.4878,
+          0.4762,
+          0.4651,
+          0.4773,
+          0.4667,
+          0.4565,
+          0.4468,
+          0.4375,
+          0.4286,
+          0.42
+        ],
+        "liftCI": {
+          "lower": 1.6866,
+          "upper": 3.2451,
+          "mean": 2.4558,
+          "median": 2.4493
+        },
+        "hitRateCI": {
+          "lower": 0.3,
+          "upper": 0.6,
+          "mean": 0.4495,
+          "median": 0.44
+        },
+        "baselines": [
+          {
+            "name": "random",
+            "surfaced": 50,
+            "bridged": 12,
+            "hitRate": 0.24,
+            "baseRate": 0.1832,
+            "lift": 1.3101
+          },
+          {
+            "name": "lowest-crossflow",
+            "surfaced": 50,
+            "bridged": 1,
+            "hitRate": 0.02,
+            "baseRate": 0.1832,
+            "lift": 0.1092
+          },
+          {
+            "name": "highest-simgrowth",
+            "surfaced": 50,
+            "bridged": 26,
+            "hitRate": 0.52,
+            "baseRate": 0.1832,
+            "lift": 2.8386
+          },
+          {
+            "name": "highest-crossflow-growth",
+            "surfaced": 50,
+            "bridged": 35,
+            "hitRate": 0.7,
+            "baseRate": 0.1832,
+            "lift": 3.8213
+          },
+          {
+            "name": "highest-diversity-growth",
+            "surfaced": 50,
+            "bridged": 6,
+            "hitRate": 0.12,
+            "baseRate": 0.1832,
+            "lift": 0.6551
+          },
+          {
+            "name": "ablation-gap-only",
+            "surfaced": 50,
+            "bridged": 26,
+            "hitRate": 0.52,
+            "baseRate": 0.1832,
+            "lift": 2.8386
+          },
+          {
+            "name": "ablation-sim-only",
+            "surfaced": 50,
+            "bridged": 1,
+            "hitRate": 0.02,
+            "baseRate": 0.1832,
+            "lift": 0.1092
+          },
+          {
+            "name": "field-size",
+            "surfaced": 50,
+            "bridged": 11,
+            "hitRate": 0.22,
+            "baseRate": 0.1832,
+            "lift": 1.201
+          },
+          {
+            "name": "full",
+            "surfaced": 50,
+            "bridged": 21,
+            "hitRate": 0.42,
+            "baseRate": 0.1832,
+            "lift": 2.2928
+          }
+        ]
+      },
+      {
+        "current": 2020,
+        "prior": 2017,
+        "horizon": 2023,
+        "heldOut": true,
+        "calibrationWindow": false,
+        "eligible": 1358,
+        "surfaced": 50,
+        "bridged": 14,
+        "hitRate": 0.28,
+        "baseRate": 0.176,
+        "lift": 1.591,
+        "precisionAtK": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.125,
+          0.2222,
+          0.2,
+          0.1818,
+          0.1667,
+          0.2308,
+          0.2143,
+          0.2667,
+          0.25,
+          0.2353,
+          0.2222,
+          0.2105,
+          0.2,
+          0.1905,
+          0.1818,
+          0.2174,
+          0.2083,
+          0.2,
+          0.2308,
+          0.2593,
+          0.2857,
+          0.2759,
+          0.2667,
+          0.2581,
+          0.2813,
+          0.2727,
+          0.2647,
+          0.2857,
+          0.3056,
+          0.2973,
+          0.2895,
+          0.2821,
+          0.3,
+          0.2927,
+          0.3095,
+          0.3023,
+          0.2955,
+          0.2889,
+          0.2826,
+          0.2979,
+          0.2917,
+          0.2857,
+          0.28
+        ],
+        "liftCI": {
+          "lower": 0.9817,
+          "upper": 2.3765,
+          "mean": 1.6477,
+          "median": 1.6427
+        },
+        "hitRateCI": {
+          "lower": 0.18,
+          "upper": 0.42,
+          "mean": 0.29,
+          "median": 0.28
+        },
+        "baselines": [
+          {
+            "name": "random",
+            "surfaced": 50,
+            "bridged": 9,
+            "hitRate": 0.18,
+            "baseRate": 0.176,
+            "lift": 1.0228
+          },
+          {
+            "name": "lowest-crossflow",
+            "surfaced": 50,
+            "bridged": 1,
+            "hitRate": 0.02,
+            "baseRate": 0.176,
+            "lift": 0.1136
+          },
+          {
+            "name": "highest-simgrowth",
+            "surfaced": 50,
+            "bridged": 18,
+            "hitRate": 0.36,
+            "baseRate": 0.176,
+            "lift": 2.0455
+          },
+          {
+            "name": "highest-crossflow-growth",
+            "surfaced": 50,
+            "bridged": 31,
+            "hitRate": 0.62,
+            "baseRate": 0.176,
+            "lift": 3.5228
+          },
+          {
+            "name": "highest-diversity-growth",
+            "surfaced": 50,
+            "bridged": 6,
+            "hitRate": 0.12,
+            "baseRate": 0.176,
+            "lift": 0.6818
+          },
+          {
+            "name": "ablation-gap-only",
+            "surfaced": 50,
+            "bridged": 18,
+            "hitRate": 0.36,
+            "baseRate": 0.176,
+            "lift": 2.0455
+          },
+          {
+            "name": "ablation-sim-only",
+            "surfaced": 50,
+            "bridged": 1,
+            "hitRate": 0.02,
+            "baseRate": 0.176,
+            "lift": 0.1136
+          },
+          {
+            "name": "field-size",
+            "surfaced": 50,
+            "bridged": 16,
+            "hitRate": 0.32,
+            "baseRate": 0.176,
+            "lift": 1.8182
+          },
+          {
+            "name": "full",
+            "surfaced": 50,
+            "bridged": 14,
+            "hitRate": 0.28,
+            "baseRate": 0.176,
+            "lift": 1.591
+          }
+        ]
+      }
+    ],
+    "pooled": {
+      "name": "pooled-held-out",
+      "surfaced": 100,
+      "bridged": 35,
+      "hitRate": 0.35,
+      "baseRate": 0.1848,
+      "lift": 1.8936
+    },
+    "successThreshold": {
+      "lowerCILift": 1.1,
+      "consecutiveWindows": 2
+    },
+    "verdict": {
+      "passed": false,
+      "state": "FAIL",
+      "reason": "lower 95% CI of lift <= 1.1 on held-out windows (max run 1)"
+    },
+    "config": {
+      "version": "0.2.0-subfield",
+      "sampleSize": 500,
+      "windowYears": 5,
+      "topKeywords": 200,
+      "minCoverage": 0.3,
+      "minPubs": 5,
+      "minCitationGap": 0.7,
+      "minSimGrowth": 0.05,
+      "densityNorm": 0.4,
+      "topK": 50
+    }
+  }
+}

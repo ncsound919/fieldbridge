@@ -6,6 +6,18 @@ export { buildFlowMatrix, normalizeFlow, trackedFlowShare } from "./matrix";
 export { validate } from "./validate";
 export { ENGINE_CONFIG, fnv1a, stableStringify, hashObject, stageHash, type EngineConfig } from "./config";
 export {
+  referenceShares,
+  disparityMatrix,
+  gini,
+  raoStirling,
+  shannon,
+  simpson,
+  diversityOf,
+  bootstrapRaoStirling,
+  diversityDelta,
+  type DiversityProfile,
+} from "./diversity";
+export {
   scorePairs,
   rankGaps,
   allPairs,
@@ -16,6 +28,7 @@ export {
 } from "./gaps";
 export { retrospectiveValidate, type HistoricalRun, type ValidationResult } from "./validation";
 export {
+  SUBFIELD_CONFIG,
   rollingOriginBenchmark,
   baselineRankings,
   pairBootstrapLift,
@@ -31,8 +44,13 @@ export {
   buildPairSeries,
   closingRank,
   emergingRank,
+  convergingRank,
+  convergenceTest,
   relativeGrowth,
   type PairSeries,
   type ClosingGap,
   type EmergingGap,
+  type ConvergingPair,
+  type DirectionalGrowth,
+  type ConvergenceCounts,
 } from "./trends";

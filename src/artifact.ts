@@ -20,10 +20,14 @@ import {
 import {
   abstractText,
   allPairs,
+  bootstrapRaoStirling,
   buildFlowMatrix,
   buildPairSeries,
   closingRank,
+  convergenceTest,
+  convergingRank,
   cosine,
+  diversityOf,
   emergingRank,
   ENGINE_CONFIG,
   hashObject,
@@ -130,6 +134,45 @@ const series = buildPairSeries(years, crossFlowByYear, kwSimByYear, surfacedKeys
 const closing = closingRank(series).slice(0, 20);
 const emerging = emergingRank(series, ENGINE_CONFIG.densityNorm).slice(0, 20);
 
+// Validated convergence (Buter et al.): directional growth significance +
+// reciprocal check for baseline-surfaced pairs, current vs prior year.
+const testByPair: Record<string, ReturnType<typeof convergenceTest>> = {};
+for (const [a, b] of allPairs(fields)) {
+  const key = [a, b].sort().join(" \u00d7 ");
+  const resolvedA = cur.flows[a]?._total_refs_resolved ?? 0;
+  const resolvedB = cur.flows[b]?._total_refs_resolved ?? 0;
+  const priorResolvedA = prior.flows[a]?._total_refs_resolved ?? 0;
+  const priorResolvedB = prior.flows[b]?._total_refs_resolved ?? 0;
+  testByPair[key] = convergenceTest({
+    countAB: (cur.flows[a]?.[b] ?? 0) * resolvedA,
+    totalA: resolvedA,
+    countBA: (cur.flows[b]?.[a] ?? 0) * resolvedB,
+    totalB: resolvedB,
+    priorCountAB: (prior.flows[a]?.[b] ?? 0) * priorResolvedA,
+    priorTotalA: priorResolvedA,
+    priorCountBA: (prior.flows[b]?.[a] ?? 0) * priorResolvedB,
+    priorTotalB: priorResolvedB,
+  });
+}
+const converging = convergingRank(series, testByPair).slice(0, 20);
+
+// Canonical interdisciplinarity indices per field per year (RS, DIV + its
+// variety/balance/disparity components, Shannon, Simpson, Gini) + bootstrap
+// 95% CI for Rao-Stirling. This is the institutional-credibility surface.
+const diversity: Record<string, Record<string, unknown>> = {};
+for (const y of years) {
+  const st = states.get(y)!;
+  const perField: Record<string, unknown> = {};
+  for (const f of fields) {
+    const profile = diversityOf(st.flows, f, fields);
+    perField[f] = {
+      ...profile,
+      raoStirlingCI: bootstrapRaoStirling(st.flows, f, fields, { draws: 500, seed: 0xfb }),
+    };
+  }
+  diversity[String(y)] = perField;
+}
+
 // Drilldown evidence for surfaced gaps: shared top keywords + bridge papers.
 const drilldown: Record<string, { sharedKeywords: string[]; bridgePapers: number }> = {};
 for (const g of surfaced) {
@@ -224,12 +267,14 @@ const artifact = {
   trends: {
     closing: closing,
     emerging: emerging,
+    converging: converging,
     series: series.map((s) => ({
       pair: s.pair,
       crossFlow: s.crossFlow,
       kwSim: s.kwSim,
     })),
   },
+  diversity,
   drilldown,
   checks: validate(cur.flows, cur.kws, fields),
 };

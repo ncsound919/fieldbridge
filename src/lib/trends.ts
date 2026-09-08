@@ -52,6 +52,105 @@ export interface EmergingGap {
   emergenceScore: number;
 }
 
+/**
+ * Directional convergence test (Buter/Noyons/van Raan 2010, quantitative
+ * phase): a pair "converges" only when citation growth in BOTH directions is
+ * statistically significant — a one-directional spike is a transfer, not a
+ * convergence. Each direction is a two-proportion z-test on citation counts
+ * (share x resolved refs), one-sided at the 5% level by default.
+ */
+export interface DirectionalGrowth {
+  ab: number;
+  ba: number;
+  zAB: number;
+  zBA: number;
+  significantAB: boolean;
+  significantBA: boolean;
+  reciprocal: boolean;
+}
+
+export interface ConvergenceCounts {
+  countAB: number;
+  totalA: number;
+  countBA: number;
+  totalB: number;
+  priorCountAB: number;
+  priorTotalA: number;
+  priorCountBA: number;
+  priorTotalB: number;
+}
+
+export function convergenceTest(c: ConvergenceCounts, zCrit = 1.645): DirectionalGrowth {
+  const dir = (
+    cur: number, tot: number, prior: number, priorTot: number,
+  ): { growth: number; z: number; significant: boolean } => {
+    const p = tot > 0 ? cur / tot : 0;
+    const pp = priorTot > 0 ? prior / priorTot : 0;
+    const growth = p - pp;
+    const se = Math.sqrt(
+      (tot > 0 ? (p * (1 - p)) / tot : 0) + (priorTot > 0 ? (pp * (1 - pp)) / priorTot : 0),
+    );
+    const z = se > 0 ? growth / se : 0;
+    return { growth, z, significant: growth > 0 && z >= zCrit };
+  };
+  const ab = dir(c.countAB, c.totalA, c.priorCountAB, c.priorTotalA);
+  const ba = dir(c.countBA, c.totalB, c.priorCountBA, c.priorTotalB);
+  return {
+    ab: ab.growth,
+    ba: ba.growth,
+    zAB: ab.z,
+    zBA: ba.z,
+    significantAB: ab.significant,
+    significantBA: ba.significant,
+    reciprocal: ab.significant && ba.significant,
+  };
+}
+
+export interface ConvergingPair {
+  pair: string;
+  a: string;
+  b: string;
+  growthAB: number;
+  growthBA: number;
+  zAB: number;
+  zBA: number;
+  reciprocal: boolean;
+  /** min(zAB, zBA) — the weaker direction limits the claim. */
+  convergenceStrength: number;
+}
+
+/**
+ * Rank validated convergences: pairs surfaced at baseline whose citation
+ * growth is significant in BOTH directions. Sorted by the weaker direction's
+ * z-score (the claim is only as strong as its weaker half).
+ */
+export function convergingRank(
+  series: PairSeries[],
+  testByPair: Record<string, DirectionalGrowth>,
+): ConvergingPair[] {
+  return series
+    .filter((s) => s.surfacedAtBaseline)
+    .map((s) => {
+      const t = testByPair[keyOf(s)] ?? {
+        ab: 0, ba: 0, zAB: 0, zBA: 0,
+        significantAB: false, significantBA: false, reciprocal: false,
+      };
+      return {
+        pair: keyOf(s),
+        a: s.a,
+        b: s.b,
+        growthAB: t.ab,
+        growthBA: t.ba,
+        zAB: t.zAB,
+        zBA: t.zBA,
+        reciprocal: t.reciprocal,
+        convergenceStrength: Math.min(t.zAB, t.zBA),
+      };
+    })
+    .filter((c) => c.reciprocal)
+    .sort((x, y) => y.convergenceStrength - x.convergenceStrength);
+}
+
 /** Relative growth from first to last value; 0 if start is 0. */
 export function relativeGrowth(values: number[]): number {
   if (values.length < 2) return 0;

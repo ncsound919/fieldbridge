@@ -21,7 +21,7 @@
       "method": "stride-subset over sorted ref ids",
       "note": "flow shares computed over the resolved subset of attempted refs"
     },
-    "generatedAt": "2026-09-08T04:04:15.657Z"
+    "generatedAt": "2026-09-08T05:29:21.771Z"
   },
   "fields": [
     "Engineering",
@@ -9820,6 +9820,30 @@
         "emergenceScore": 0.7921300099405567
       }
     ],
+    "converging": [
+      {
+        "pair": "Computer Science × Psychology",
+        "a": "Computer Science",
+        "b": "Psychology",
+        "growthAB": 0.009410475075711128,
+        "growthBA": 0.03970872590346927,
+        "zAB": 2.6146584567256,
+        "zBA": 2.4789573214894456,
+        "reciprocal": true,
+        "convergenceStrength": 2.4789573214894456
+      },
+      {
+        "pair": "Health Professions × Neuroscience",
+        "a": "Health Professions",
+        "b": "Neuroscience",
+        "growthAB": 0.011551362683438156,
+        "growthBA": 0.006376135904523096,
+        "zAB": 2.1742410121428954,
+        "zBA": 2.3567740592212534,
+        "reciprocal": true,
+        "convergenceStrength": 2.1742410121428954
+      }
+    ],
     "series": [
       {
         "pair": "Engineering × Social Sciences",
@@ -14697,6 +14721,2096 @@
         ]
       }
     ]
+  },
+  "diversity": {
+    "2014": {
+      "Engineering": {
+        "unit": "Engineering",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.188145,
+        "disparity": 0.894078,
+        "raoStirling": 0.478698,
+        "div": 0.142337,
+        "shannon": 1.547559,
+        "simpson": 0.610141,
+        "gini": 0.811855,
+        "refs": 1172,
+        "raoStirlingCI": {
+          "lower": 0.451857,
+          "upper": 0.506752,
+          "mean": 0.477698,
+          "median": 0.478206
+        }
+      },
+      "Social Sciences": {
+        "unit": "Social Sciences",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.285345,
+        "disparity": 0.870444,
+        "raoStirling": 0.494739,
+        "div": 0.181506,
+        "shannon": 1.812478,
+        "simpson": 0.689861,
+        "gini": 0.714655,
+        "refs": 1060,
+        "raoStirlingCI": {
+          "lower": 0.469129,
+          "upper": 0.52008,
+          "mean": 0.493392,
+          "median": 0.493637
+        }
+      },
+      "Medicine": {
+        "unit": "Medicine",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.161766,
+        "disparity": 0.876463,
+        "raoStirling": 0.326453,
+        "div": 0.119969,
+        "shannon": 1.281944,
+        "simpson": 0.513443,
+        "gini": 0.838234,
+        "refs": 978,
+        "raoStirlingCI": {
+          "lower": 0.29919,
+          "upper": 0.351403,
+          "mean": 0.324652,
+          "median": 0.324662
+        }
+      },
+      "Arts and Humanities": {
+        "unit": "Arts and Humanities",
+        "n": 18,
+        "N": 26,
+        "variety": 0.692308,
+        "balance": 0.286354,
+        "disparity": 0.881356,
+        "raoStirling": 0.557805,
+        "div": 0.174724,
+        "shannon": 1.818774,
+        "simpson": 0.720278,
+        "gini": 0.713646,
+        "refs": 884,
+        "raoStirlingCI": {
+          "lower": 0.527062,
+          "upper": 0.582636,
+          "mean": 0.55607,
+          "median": 0.555728
+        }
+      },
+      "Computer Science": {
+        "unit": "Computer Science",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.151806,
+        "disparity": 0.872072,
+        "raoStirling": 0.263102,
+        "div": 0.08656,
+        "shannon": 0.854757,
+        "simpson": 0.304697,
+        "gini": 0.848194,
+        "refs": 1203,
+        "raoStirlingCI": {
+          "lower": 0.232957,
+          "upper": 0.295116,
+          "mean": 0.262972,
+          "median": 0.263568
+        }
+      },
+      "Agricultural and Biological Sciences": {
+        "unit": "Agricultural and Biological Sciences",
+        "n": 24,
+        "N": 26,
+        "variety": 0.923077,
+        "balance": 0.199492,
+        "disparity": 0.889763,
+        "raoStirling": 0.488715,
+        "div": 0.163847,
+        "shannon": 1.68486,
+        "simpson": 0.674899,
+        "gini": 0.800508,
+        "refs": 954,
+        "raoStirlingCI": {
+          "lower": 0.463556,
+          "upper": 0.514065,
+          "mean": 0.487165,
+          "median": 0.487719
+        }
+      },
+      "Physics and Astronomy": {
+        "unit": "Physics and Astronomy",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.188611,
+        "disparity": 0.898287,
+        "raoStirling": 0.439505,
+        "div": 0.123812,
+        "shannon": 1.295423,
+        "simpson": 0.493587,
+        "gini": 0.811389,
+        "refs": 939,
+        "raoStirlingCI": {
+          "lower": 0.403975,
+          "upper": 0.46951,
+          "mean": 0.437674,
+          "median": 0.437633
+        }
+      },
+      "Biochemistry, Genetics and Molecular Biology": {
+        "unit": "Biochemistry, Genetics and Molecular Biology",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.185942,
+        "disparity": 0.890996,
+        "raoStirling": 0.42178,
+        "div": 0.146558,
+        "shannon": 1.563939,
+        "simpson": 0.620683,
+        "gini": 0.814058,
+        "refs": 1107,
+        "raoStirlingCI": {
+          "lower": 0.39526,
+          "upper": 0.447238,
+          "mean": 0.420607,
+          "median": 0.421402
+        }
+      },
+      "Environmental Science": {
+        "unit": "Environmental Science",
+        "n": 25,
+        "N": 26,
+        "variety": 0.961538,
+        "balance": 0.287068,
+        "disparity": 0.893783,
+        "raoStirling": 0.624203,
+        "div": 0.246708,
+        "shannon": 2.040553,
+        "simpson": 0.726793,
+        "gini": 0.712932,
+        "refs": 996,
+        "raoStirlingCI": {
+          "lower": 0.597379,
+          "upper": 0.647996,
+          "mean": 0.623464,
+          "median": 0.624429
+        }
+      },
+      "Economics, Econometrics and Finance": {
+        "unit": "Economics, Econometrics and Finance",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.241235,
+        "disparity": 0.879457,
+        "raoStirling": 0.52507,
+        "div": 0.163197,
+        "shannon": 1.693803,
+        "simpson": 0.653894,
+        "gini": 0.758765,
+        "refs": 949,
+        "raoStirlingCI": {
+          "lower": 0.500012,
+          "upper": 0.552475,
+          "mean": 0.523935,
+          "median": 0.524174
+        }
+      },
+      "Materials Science": {
+        "unit": "Materials Science",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.196641,
+        "disparity": 0.887918,
+        "raoStirling": 0.45906,
+        "div": 0.127593,
+        "shannon": 1.499724,
+        "simpson": 0.61553,
+        "gini": 0.803359,
+        "refs": 1410,
+        "raoStirlingCI": {
+          "lower": 0.434264,
+          "upper": 0.479452,
+          "mean": 0.458274,
+          "median": 0.458309
+        }
+      },
+      "Business, Management and Accounting": {
+        "unit": "Business, Management and Accounting",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.271972,
+        "disparity": 0.862221,
+        "raoStirling": 0.507181,
+        "div": 0.153327,
+        "shannon": 1.781086,
+        "simpson": 0.732965,
+        "gini": 0.728028,
+        "refs": 1277,
+        "raoStirlingCI": {
+          "lower": 0.486611,
+          "upper": 0.525593,
+          "mean": 0.506755,
+          "median": 0.506566
+        }
+      },
+      "Psychology": {
+        "unit": "Psychology",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.240432,
+        "disparity": 0.888962,
+        "raoStirling": 0.516488,
+        "div": 0.164411,
+        "shannon": 1.763617,
+        "simpson": 0.698197,
+        "gini": 0.759568,
+        "refs": 1182,
+        "raoStirlingCI": {
+          "lower": 0.494699,
+          "upper": 0.537601,
+          "mean": 0.516064,
+          "median": 0.516436
+        }
+      },
+      "Health Professions": {
+        "unit": "Health Professions",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.260641,
+        "disparity": 0.882522,
+        "raoStirling": 0.586656,
+        "div": 0.20348,
+        "shannon": 2.027416,
+        "simpson": 0.783484,
+        "gini": 0.739359,
+        "refs": 955,
+        "raoStirlingCI": {
+          "lower": 0.563383,
+          "upper": 0.606306,
+          "mean": 0.585832,
+          "median": 0.585846
+        }
+      },
+      "Earth and Planetary Sciences": {
+        "unit": "Earth and Planetary Sciences",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.193804,
+        "disparity": 0.894078,
+        "raoStirling": 0.490938,
+        "div": 0.146618,
+        "shannon": 1.494923,
+        "simpson": 0.579881,
+        "gini": 0.806196,
+        "refs": 986,
+        "raoStirlingCI": {
+          "lower": 0.457664,
+          "upper": 0.519156,
+          "mean": 0.490184,
+          "median": 0.491098
+        }
+      },
+      "Chemistry": {
+        "unit": "Chemistry",
+        "n": 18,
+        "N": 26,
+        "variety": 0.692308,
+        "balance": 0.188889,
+        "disparity": 0.886998,
+        "raoStirling": 0.414762,
+        "div": 0.115992,
+        "shannon": 1.29199,
+        "simpson": 0.506137,
+        "gini": 0.811111,
+        "refs": 1520,
+        "raoStirlingCI": {
+          "lower": 0.389617,
+          "upper": 0.438518,
+          "mean": 0.413766,
+          "median": 0.414234
+        }
+      },
+      "Mathematics": {
+        "unit": "Mathematics",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.220773,
+        "disparity": 0.895475,
+        "raoStirling": 0.583602,
+        "div": 0.167282,
+        "shannon": 1.77507,
+        "simpson": 0.702287,
+        "gini": 0.779227,
+        "refs": 1065,
+        "raoStirlingCI": {
+          "lower": 0.559893,
+          "upper": 0.604342,
+          "mean": 0.582971,
+          "median": 0.582955
+        }
+      },
+      "Neuroscience": {
+        "unit": "Neuroscience",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.211275,
+        "disparity": 0.878376,
+        "raoStirling": 0.511701,
+        "div": 0.142753,
+        "shannon": 1.614854,
+        "simpson": 0.653609,
+        "gini": 0.788725,
+        "refs": 1082,
+        "raoStirlingCI": {
+          "lower": 0.485127,
+          "upper": 0.536504,
+          "mean": 0.510702,
+          "median": 0.510887
+        }
+      },
+      "Decision Sciences": {
+        "unit": "Decision Sciences",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.325397,
+        "disparity": 0.890444,
+        "raoStirling": 0.645067,
+        "div": 0.234027,
+        "shannon": 2.158286,
+        "simpson": 0.816384,
+        "gini": 0.674603,
+        "refs": 1105,
+        "raoStirlingCI": {
+          "lower": 0.626975,
+          "upper": 0.662747,
+          "mean": 0.644596,
+          "median": 0.644543
+        }
+      },
+      "Immunology and Microbiology": {
+        "unit": "Immunology and Microbiology",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.154995,
+        "disparity": 0.88102,
+        "raoStirling": 0.38686,
+        "div": 0.110294,
+        "shannon": 1.394631,
+        "simpson": 0.659366,
+        "gini": 0.845005,
+        "refs": 1021,
+        "raoStirlingCI": {
+          "lower": 0.366568,
+          "upper": 0.405005,
+          "mean": 0.386127,
+          "median": 0.386278
+        }
+      },
+      "Energy": {
+        "unit": "Energy",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.156265,
+        "disparity": 0.894193,
+        "raoStirling": 0.441995,
+        "div": 0.107486,
+        "shannon": 1.351563,
+        "simpson": 0.588554,
+        "gini": 0.843735,
+        "refs": 1628,
+        "raoStirlingCI": {
+          "lower": 0.422284,
+          "upper": 0.461205,
+          "mean": 0.441232,
+          "median": 0.441059
+        }
+      },
+      "Nursing": {
+        "unit": "Nursing",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.22966,
+        "disparity": 0.887211,
+        "raoStirling": 0.474289,
+        "div": 0.17241,
+        "shannon": 1.872288,
+        "simpson": 0.773144,
+        "gini": 0.77034,
+        "refs": 1029,
+        "raoStirlingCI": {
+          "lower": 0.454076,
+          "upper": 0.49675,
+          "mean": 0.474229,
+          "median": 0.474393
+        }
+      },
+      "Pharmacology, Toxicology and Pharmaceutics": {
+        "unit": "Pharmacology, Toxicology and Pharmaceutics",
+        "n": 24,
+        "N": 26,
+        "variety": 0.923077,
+        "balance": 0.201923,
+        "disparity": 0.893218,
+        "raoStirling": 0.551188,
+        "div": 0.166487,
+        "shannon": 1.790568,
+        "simpson": 0.727927,
+        "gini": 0.798077,
+        "refs": 1132,
+        "raoStirlingCI": {
+          "lower": 0.531991,
+          "upper": 0.570618,
+          "mean": 0.55065,
+          "median": 0.550552
+        }
+      },
+      "Dentistry": {
+        "unit": "Dentistry",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.184971,
+        "disparity": 0.870412,
+        "raoStirling": 0.4516,
+        "div": 0.123847,
+        "shannon": 1.347826,
+        "simpson": 0.526867,
+        "gini": 0.815029,
+        "refs": 1042,
+        "raoStirlingCI": {
+          "lower": 0.421293,
+          "upper": 0.48025,
+          "mean": 0.451421,
+          "median": 0.451533
+        }
+      },
+      "Chemical Engineering": {
+        "unit": "Chemical Engineering",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.197965,
+        "disparity": 0.889414,
+        "raoStirling": 0.514462,
+        "div": 0.128669,
+        "shannon": 1.543784,
+        "simpson": 0.654142,
+        "gini": 0.802035,
+        "refs": 1349,
+        "raoStirlingCI": {
+          "lower": 0.491948,
+          "upper": 0.534213,
+          "mean": 0.513761,
+          "median": 0.513506
+        }
+      },
+      "Veterinary": {
+        "unit": "Veterinary",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.237815,
+        "disparity": 0.871525,
+        "raoStirling": 0.541111,
+        "div": 0.159432,
+        "shannon": 1.747326,
+        "simpson": 0.700643,
+        "gini": 0.762185,
+        "refs": 954,
+        "raoStirlingCI": {
+          "lower": 0.51849,
+          "upper": 0.564216,
+          "mean": 0.540349,
+          "median": 0.540196
+        }
+      }
+    },
+    "2017": {
+      "Engineering": {
+        "unit": "Engineering",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.161206,
+        "disparity": 0.901059,
+        "raoStirling": 0.438191,
+        "div": 0.128496,
+        "shannon": 1.354332,
+        "simpson": 0.520952,
+        "gini": 0.838794,
+        "refs": 1201,
+        "raoStirlingCI": {
+          "lower": 0.406574,
+          "upper": 0.468001,
+          "mean": 0.43711,
+          "median": 0.437172
+        }
+      },
+      "Social Sciences": {
+        "unit": "Social Sciences",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.320182,
+        "disparity": 0.878313,
+        "raoStirling": 0.515403,
+        "div": 0.183875,
+        "shannon": 1.820075,
+        "simpson": 0.696574,
+        "gini": 0.679818,
+        "refs": 996,
+        "raoStirlingCI": {
+          "lower": 0.486166,
+          "upper": 0.542667,
+          "mean": 0.514219,
+          "median": 0.514807
+        }
+      },
+      "Medicine": {
+        "unit": "Medicine",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.158024,
+        "disparity": 0.881948,
+        "raoStirling": 0.30454,
+        "div": 0.112567,
+        "shannon": 1.165639,
+        "simpson": 0.453439,
+        "gini": 0.841976,
+        "refs": 1011,
+        "raoStirlingCI": {
+          "lower": 0.27313,
+          "upper": 0.33116,
+          "mean": 0.302889,
+          "median": 0.303112
+        }
+      },
+      "Arts and Humanities": {
+        "unit": "Arts and Humanities",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.193948,
+        "disparity": 0.896648,
+        "raoStirling": 0.463402,
+        "div": 0.133771,
+        "shannon": 1.542044,
+        "simpson": 0.6658,
+        "gini": 0.806052,
+        "refs": 920,
+        "raoStirlingCI": {
+          "lower": 0.437454,
+          "upper": 0.487098,
+          "mean": 0.462385,
+          "median": 0.462684
+        }
+      },
+      "Computer Science": {
+        "unit": "Computer Science",
+        "n": 18,
+        "N": 26,
+        "variety": 0.692308,
+        "balance": 0.132337,
+        "disparity": 0.887907,
+        "raoStirling": 0.251176,
+        "div": 0.081348,
+        "shannon": 0.79481,
+        "simpson": 0.292544,
+        "gini": 0.867663,
+        "refs": 1205,
+        "raoStirlingCI": {
+          "lower": 0.223511,
+          "upper": 0.280829,
+          "mean": 0.250669,
+          "median": 0.25067
+        }
+      },
+      "Agricultural and Biological Sciences": {
+        "unit": "Agricultural and Biological Sciences",
+        "n": 24,
+        "N": 26,
+        "variety": 0.923077,
+        "balance": 0.223297,
+        "disparity": 0.898031,
+        "raoStirling": 0.543943,
+        "div": 0.185103,
+        "shannon": 1.782996,
+        "simpson": 0.685257,
+        "gini": 0.776703,
+        "refs": 971,
+        "raoStirlingCI": {
+          "lower": 0.516164,
+          "upper": 0.565864,
+          "mean": 0.542441,
+          "median": 0.543177
+        }
+      },
+      "Physics and Astronomy": {
+        "unit": "Physics and Astronomy",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.166382,
+        "disparity": 0.897979,
+        "raoStirling": 0.403712,
+        "div": 0.126421,
+        "shannon": 1.216076,
+        "simpson": 0.442343,
+        "gini": 0.833618,
+        "refs": 1063,
+        "raoStirlingCI": {
+          "lower": 0.366866,
+          "upper": 0.436129,
+          "mean": 0.40242,
+          "median": 0.402178
+        }
+      },
+      "Biochemistry, Genetics and Molecular Biology": {
+        "unit": "Biochemistry, Genetics and Molecular Biology",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.17769,
+        "disparity": 0.890581,
+        "raoStirling": 0.412185,
+        "div": 0.127815,
+        "shannon": 1.436549,
+        "simpson": 0.593729,
+        "gini": 0.82231,
+        "refs": 1080,
+        "raoStirlingCI": {
+          "lower": 0.385638,
+          "upper": 0.436783,
+          "mean": 0.410931,
+          "median": 0.411382
+        }
+      },
+      "Environmental Science": {
+        "unit": "Environmental Science",
+        "n": 25,
+        "N": 26,
+        "variety": 0.961538,
+        "balance": 0.265975,
+        "disparity": 0.893614,
+        "raoStirling": 0.587488,
+        "div": 0.228538,
+        "shannon": 1.915852,
+        "simpson": 0.681815,
+        "gini": 0.734025,
+        "refs": 1062,
+        "raoStirlingCI": {
+          "lower": 0.555865,
+          "upper": 0.614031,
+          "mean": 0.586488,
+          "median": 0.586936
+        }
+      },
+      "Economics, Econometrics and Finance": {
+        "unit": "Economics, Econometrics and Finance",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.231597,
+        "disparity": 0.890311,
+        "raoStirling": 0.540452,
+        "div": 0.174472,
+        "shannon": 1.731415,
+        "simpson": 0.657191,
+        "gini": 0.768403,
+        "refs": 968,
+        "raoStirlingCI": {
+          "lower": 0.513292,
+          "upper": 0.56662,
+          "mean": 0.539077,
+          "median": 0.538306
+        }
+      },
+      "Materials Science": {
+        "unit": "Materials Science",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.20695,
+        "disparity": 0.903398,
+        "raoStirling": 0.49576,
+        "div": 0.143814,
+        "shannon": 1.533105,
+        "simpson": 0.604134,
+        "gini": 0.79305,
+        "refs": 1483,
+        "raoStirlingCI": {
+          "lower": 0.470168,
+          "upper": 0.519459,
+          "mean": 0.494799,
+          "median": 0.494257
+        }
+      },
+      "Business, Management and Accounting": {
+        "unit": "Business, Management and Accounting",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.254398,
+        "disparity": 0.889753,
+        "raoStirling": 0.543258,
+        "div": 0.174117,
+        "shannon": 1.85163,
+        "simpson": 0.733325,
+        "gini": 0.745602,
+        "refs": 1213,
+        "raoStirlingCI": {
+          "lower": 0.52104,
+          "upper": 0.562962,
+          "mean": 0.543007,
+          "median": 0.543601
+        }
+      },
+      "Psychology": {
+        "unit": "Psychology",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.274432,
+        "disparity": 0.875939,
+        "raoStirling": 0.545394,
+        "div": 0.175667,
+        "shannon": 1.832115,
+        "simpson": 0.715198,
+        "gini": 0.725568,
+        "refs": 1028,
+        "raoStirlingCI": {
+          "lower": 0.519854,
+          "upper": 0.56549,
+          "mean": 0.544253,
+          "median": 0.544258
+        }
+      },
+      "Health Professions": {
+        "unit": "Health Professions",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.283239,
+        "disparity": 0.889073,
+        "raoStirling": 0.572322,
+        "div": 0.203393,
+        "shannon": 2.010294,
+        "simpson": 0.785686,
+        "gini": 0.716761,
+        "refs": 963,
+        "raoStirlingCI": {
+          "lower": 0.548891,
+          "upper": 0.594224,
+          "mean": 0.571443,
+          "median": 0.571755
+        }
+      },
+      "Earth and Planetary Sciences": {
+        "unit": "Earth and Planetary Sciences",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.225843,
+        "disparity": 0.908509,
+        "raoStirling": 0.545366,
+        "div": 0.165723,
+        "shannon": 1.667062,
+        "simpson": 0.64787,
+        "gini": 0.774157,
+        "refs": 928,
+        "raoStirlingCI": {
+          "lower": 0.516363,
+          "upper": 0.571902,
+          "mean": 0.544779,
+          "median": 0.544658
+        }
+      },
+      "Chemistry": {
+        "unit": "Chemistry",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.209046,
+        "disparity": 0.889054,
+        "raoStirling": 0.432344,
+        "div": 0.12152,
+        "shannon": 1.312637,
+        "simpson": 0.509122,
+        "gini": 0.790954,
+        "refs": 1636,
+        "raoStirlingCI": {
+          "lower": 0.404198,
+          "upper": 0.456601,
+          "mean": 0.431432,
+          "median": 0.432205
+        }
+      },
+      "Mathematics": {
+        "unit": "Mathematics",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.217782,
+        "disparity": 0.8973,
+        "raoStirling": 0.569633,
+        "div": 0.165352,
+        "shannon": 1.722237,
+        "simpson": 0.673761,
+        "gini": 0.782218,
+        "refs": 978,
+        "raoStirlingCI": {
+          "lower": 0.540074,
+          "upper": 0.595395,
+          "mean": 0.568588,
+          "median": 0.569429
+        }
+      },
+      "Neuroscience": {
+        "unit": "Neuroscience",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.223756,
+        "disparity": 0.886292,
+        "raoStirling": 0.531728,
+        "div": 0.167804,
+        "shannon": 1.740113,
+        "simpson": 0.687398,
+        "gini": 0.776244,
+        "refs": 1061,
+        "raoStirlingCI": {
+          "lower": 0.504828,
+          "upper": 0.555636,
+          "mean": 0.530442,
+          "median": 0.531522
+        }
+      },
+      "Decision Sciences": {
+        "unit": "Decision Sciences",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.316165,
+        "disparity": 0.878161,
+        "raoStirling": 0.611073,
+        "div": 0.202894,
+        "shannon": 2.017959,
+        "simpson": 0.777818,
+        "gini": 0.683835,
+        "refs": 985,
+        "raoStirlingCI": {
+          "lower": 0.589631,
+          "upper": 0.631591,
+          "mean": 0.610868,
+          "median": 0.611236
+        }
+      },
+      "Immunology and Microbiology": {
+        "unit": "Immunology and Microbiology",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.176322,
+        "disparity": 0.880589,
+        "raoStirling": 0.428896,
+        "div": 0.125408,
+        "shannon": 1.49366,
+        "simpson": 0.662907,
+        "gini": 0.823678,
+        "refs": 1090,
+        "raoStirlingCI": {
+          "lower": 0.407321,
+          "upper": 0.447683,
+          "mean": 0.428229,
+          "median": 0.428319
+        }
+      },
+      "Energy": {
+        "unit": "Energy",
+        "n": 15,
+        "N": 26,
+        "variety": 0.576923,
+        "balance": 0.192112,
+        "disparity": 0.88272,
+        "raoStirling": 0.434067,
+        "div": 0.097835,
+        "shannon": 1.250291,
+        "simpson": 0.538078,
+        "gini": 0.807888,
+        "refs": 1758,
+        "raoStirlingCI": {
+          "lower": 0.411979,
+          "upper": 0.455486,
+          "mean": 0.433767,
+          "median": 0.433629
+        }
+      },
+      "Nursing": {
+        "unit": "Nursing",
+        "n": 25,
+        "N": 26,
+        "variety": 0.961538,
+        "balance": 0.206208,
+        "disparity": 0.894923,
+        "raoStirling": 0.507397,
+        "div": 0.177443,
+        "shannon": 1.863521,
+        "simpson": 0.757122,
+        "gini": 0.793792,
+        "refs": 1018,
+        "raoStirlingCI": {
+          "lower": 0.483885,
+          "upper": 0.527867,
+          "mean": 0.507299,
+          "median": 0.507789
+        }
+      },
+      "Pharmacology, Toxicology and Pharmaceutics": {
+        "unit": "Pharmacology, Toxicology and Pharmaceutics",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.237318,
+        "disparity": 0.892667,
+        "raoStirling": 0.571331,
+        "div": 0.162958,
+        "shannon": 1.822973,
+        "simpson": 0.758818,
+        "gini": 0.762682,
+        "refs": 1167,
+        "raoStirlingCI": {
+          "lower": 0.552893,
+          "upper": 0.587606,
+          "mean": 0.570979,
+          "median": 0.571248
+        }
+      },
+      "Dentistry": {
+        "unit": "Dentistry",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.162837,
+        "disparity": 0.888054,
+        "raoStirling": 0.44437,
+        "div": 0.12236,
+        "shannon": 1.322086,
+        "simpson": 0.518508,
+        "gini": 0.837163,
+        "refs": 994,
+        "raoStirlingCI": {
+          "lower": 0.414335,
+          "upper": 0.474619,
+          "mean": 0.443817,
+          "median": 0.444059
+        }
+      },
+      "Chemical Engineering": {
+        "unit": "Chemical Engineering",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.222814,
+        "disparity": 0.896627,
+        "raoStirling": 0.533988,
+        "div": 0.130626,
+        "shannon": 1.584571,
+        "simpson": 0.689795,
+        "gini": 0.777186,
+        "refs": 1383,
+        "raoStirlingCI": {
+          "lower": 0.513642,
+          "upper": 0.554265,
+          "mean": 0.533366,
+          "median": 0.533423
+        }
+      },
+      "Veterinary": {
+        "unit": "Veterinary",
+        "n": 24,
+        "N": 26,
+        "variety": 0.923077,
+        "balance": 0.238209,
+        "disparity": 0.891321,
+        "raoStirling": 0.586544,
+        "div": 0.195989,
+        "shannon": 1.967957,
+        "simpson": 0.760052,
+        "gini": 0.761791,
+        "refs": 940,
+        "raoStirlingCI": {
+          "lower": 0.564442,
+          "upper": 0.608178,
+          "mean": 0.586592,
+          "median": 0.586821
+        }
+      }
+    },
+    "2020": {
+      "Engineering": {
+        "unit": "Engineering",
+        "n": 25,
+        "N": 26,
+        "variety": 0.961538,
+        "balance": 0.189588,
+        "disparity": 0.864636,
+        "raoStirling": 0.509314,
+        "div": 0.15762,
+        "shannon": 1.647354,
+        "simpson": 0.629092,
+        "gini": 0.810412,
+        "refs": 1506,
+        "raoStirlingCI": {
+          "lower": 0.484747,
+          "upper": 0.531592,
+          "mean": 0.508769,
+          "median": 0.509443
+        }
+      },
+      "Social Sciences": {
+        "unit": "Social Sciences",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.280065,
+        "disparity": 0.843466,
+        "raoStirling": 0.505352,
+        "div": 0.172627,
+        "shannon": 1.77115,
+        "simpson": 0.669892,
+        "gini": 0.719935,
+        "refs": 967,
+        "raoStirlingCI": {
+          "lower": 0.478092,
+          "upper": 0.529132,
+          "mean": 0.503885,
+          "median": 0.504334
+        }
+      },
+      "Medicine": {
+        "unit": "Medicine",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.192066,
+        "disparity": 0.850492,
+        "raoStirling": 0.40636,
+        "div": 0.131937,
+        "shannon": 1.456255,
+        "simpson": 0.567238,
+        "gini": 0.807934,
+        "refs": 1198,
+        "raoStirlingCI": {
+          "lower": 0.377775,
+          "upper": 0.432711,
+          "mean": 0.405251,
+          "median": 0.406387
+        }
+      },
+      "Arts and Humanities": {
+        "unit": "Arts and Humanities",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.259589,
+        "disparity": 0.86458,
+        "raoStirling": 0.560952,
+        "div": 0.189907,
+        "shannon": 1.921614,
+        "simpson": 0.749432,
+        "gini": 0.740411,
+        "refs": 904,
+        "raoStirlingCI": {
+          "lower": 0.531998,
+          "upper": 0.584746,
+          "mean": 0.559111,
+          "median": 0.559575
+        }
+      },
+      "Computer Science": {
+        "unit": "Computer Science",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.145334,
+        "disparity": 0.836336,
+        "raoStirling": 0.240065,
+        "div": 0.079474,
+        "shannon": 0.834878,
+        "simpson": 0.305455,
+        "gini": 0.854666,
+        "refs": 1398,
+        "raoStirlingCI": {
+          "lower": 0.213816,
+          "upper": 0.264439,
+          "mean": 0.239565,
+          "median": 0.239806
+        }
+      },
+      "Agricultural and Biological Sciences": {
+        "unit": "Agricultural and Biological Sciences",
+        "n": 25,
+        "N": 26,
+        "variety": 0.961538,
+        "balance": 0.223525,
+        "disparity": 0.868424,
+        "raoStirling": 0.580838,
+        "div": 0.186649,
+        "shannon": 1.927215,
+        "simpson": 0.752393,
+        "gini": 0.776475,
+        "refs": 1079,
+        "raoStirlingCI": {
+          "lower": 0.558926,
+          "upper": 0.600931,
+          "mean": 0.579793,
+          "median": 0.58005
+        }
+      },
+      "Physics and Astronomy": {
+        "unit": "Physics and Astronomy",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.148993,
+        "disparity": 0.871935,
+        "raoStirling": 0.407014,
+        "div": 0.104929,
+        "shannon": 1.183943,
+        "simpson": 0.459043,
+        "gini": 0.851007,
+        "refs": 1133,
+        "raoStirlingCI": {
+          "lower": 0.374585,
+          "upper": 0.43836,
+          "mean": 0.405765,
+          "median": 0.405814
+        }
+      },
+      "Biochemistry, Genetics and Molecular Biology": {
+        "unit": "Biochemistry, Genetics and Molecular Biology",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.179324,
+        "disparity": 0.862242,
+        "raoStirling": 0.443289,
+        "div": 0.130833,
+        "shannon": 1.518947,
+        "simpson": 0.621107,
+        "gini": 0.820676,
+        "refs": 1131,
+        "raoStirlingCI": {
+          "lower": 0.41883,
+          "upper": 0.466564,
+          "mean": 0.443035,
+          "median": 0.443574
+        }
+      },
+      "Environmental Science": {
+        "unit": "Environmental Science",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.290148,
+        "disparity": 0.863921,
+        "raoStirling": 0.6091,
+        "div": 0.221742,
+        "shannon": 1.999456,
+        "simpson": 0.726417,
+        "gini": 0.709852,
+        "refs": 1092,
+        "raoStirlingCI": {
+          "lower": 0.582473,
+          "upper": 0.630044,
+          "mean": 0.608698,
+          "median": 0.609216
+        }
+      },
+      "Economics, Econometrics and Finance": {
+        "unit": "Economics, Econometrics and Finance",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.282821,
+        "disparity": 0.856883,
+        "raoStirling": 0.574593,
+        "div": 0.186419,
+        "shannon": 1.886579,
+        "simpson": 0.716567,
+        "gini": 0.717179,
+        "refs": 916,
+        "raoStirlingCI": {
+          "lower": 0.548435,
+          "upper": 0.596145,
+          "mean": 0.573768,
+          "median": 0.57413
+        }
+      },
+      "Materials Science": {
+        "unit": "Materials Science",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.202085,
+        "disparity": 0.862915,
+        "raoStirling": 0.525153,
+        "div": 0.147554,
+        "shannon": 1.667544,
+        "simpson": 0.66365,
+        "gini": 0.797915,
+        "refs": 1571,
+        "raoStirlingCI": {
+          "lower": 0.503175,
+          "upper": 0.544856,
+          "mean": 0.524652,
+          "median": 0.525243
+        }
+      },
+      "Business, Management and Accounting": {
+        "unit": "Business, Management and Accounting",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.264246,
+        "disparity": 0.858636,
+        "raoStirling": 0.537734,
+        "div": 0.165805,
+        "shannon": 1.824556,
+        "simpson": 0.725324,
+        "gini": 0.735754,
+        "refs": 1071,
+        "raoStirlingCI": {
+          "lower": 0.516068,
+          "upper": 0.557296,
+          "mean": 0.537314,
+          "median": 0.537291
+        }
+      },
+      "Psychology": {
+        "unit": "Psychology",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.29335,
+        "disparity": 0.832963,
+        "raoStirling": 0.546714,
+        "div": 0.159767,
+        "shannon": 1.849265,
+        "simpson": 0.744776,
+        "gini": 0.70665,
+        "refs": 1074,
+        "raoStirlingCI": {
+          "lower": 0.526217,
+          "upper": 0.563945,
+          "mean": 0.545646,
+          "median": 0.545689
+        }
+      },
+      "Health Professions": {
+        "unit": "Health Professions",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.252577,
+        "disparity": 0.863562,
+        "raoStirling": 0.572117,
+        "div": 0.192949,
+        "shannon": 2.027106,
+        "simpson": 0.797119,
+        "gini": 0.747423,
+        "refs": 954,
+        "raoStirlingCI": {
+          "lower": 0.553544,
+          "upper": 0.589405,
+          "mean": 0.571321,
+          "median": 0.571076
+        }
+      },
+      "Earth and Planetary Sciences": {
+        "unit": "Earth and Planetary Sciences",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.2018,
+        "disparity": 0.866372,
+        "raoStirling": 0.516339,
+        "div": 0.134488,
+        "shannon": 1.543895,
+        "simpson": 0.623766,
+        "gini": 0.7982,
+        "refs": 1000,
+        "raoStirlingCI": {
+          "lower": 0.490462,
+          "upper": 0.542013,
+          "mean": 0.515741,
+          "median": 0.515746
+        }
+      },
+      "Chemistry": {
+        "unit": "Chemistry",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.195419,
+        "disparity": 0.863782,
+        "raoStirling": 0.46301,
+        "div": 0.123354,
+        "shannon": 1.424219,
+        "simpson": 0.567307,
+        "gini": 0.804581,
+        "refs": 1627,
+        "raoStirlingCI": {
+          "lower": 0.44011,
+          "upper": 0.48501,
+          "mean": 0.462212,
+          "median": 0.462095
+        }
+      },
+      "Mathematics": {
+        "unit": "Mathematics",
+        "n": 24,
+        "N": 26,
+        "variety": 0.923077,
+        "balance": 0.257737,
+        "disparity": 0.854971,
+        "raoStirling": 0.599807,
+        "div": 0.203407,
+        "shannon": 2.057535,
+        "simpson": 0.787133,
+        "gini": 0.742263,
+        "refs": 1034,
+        "raoStirlingCI": {
+          "lower": 0.579513,
+          "upper": 0.616299,
+          "mean": 0.599119,
+          "median": 0.598949
+        }
+      },
+      "Neuroscience": {
+        "unit": "Neuroscience",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.214933,
+        "disparity": 0.86168,
+        "raoStirling": 0.558079,
+        "div": 0.163834,
+        "shannon": 1.822767,
+        "simpson": 0.729226,
+        "gini": 0.785067,
+        "refs": 1132,
+        "raoStirlingCI": {
+          "lower": 0.537281,
+          "upper": 0.576786,
+          "mean": 0.557638,
+          "median": 0.557905
+        }
+      },
+      "Decision Sciences": {
+        "unit": "Decision Sciences",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.331518,
+        "disparity": 0.854153,
+        "raoStirling": 0.581887,
+        "div": 0.20693,
+        "shannon": 2.101608,
+        "simpson": 0.813965,
+        "gini": 0.668482,
+        "refs": 1045,
+        "raoStirlingCI": {
+          "lower": 0.562757,
+          "upper": 0.59907,
+          "mean": 0.581415,
+          "median": 0.58154
+        }
+      },
+      "Immunology and Microbiology": {
+        "unit": "Immunology and Microbiology",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.171087,
+        "disparity": 0.840846,
+        "raoStirling": 0.402038,
+        "div": 0.105127,
+        "shannon": 1.39574,
+        "simpson": 0.649906,
+        "gini": 0.828913,
+        "refs": 1165,
+        "raoStirlingCI": {
+          "lower": 0.384292,
+          "upper": 0.421234,
+          "mean": 0.401747,
+          "median": 0.401369
+        }
+      },
+      "Energy": {
+        "unit": "Energy",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.163674,
+        "disparity": 0.874158,
+        "raoStirling": 0.389207,
+        "div": 0.09355,
+        "shannon": 1.171839,
+        "simpson": 0.49145,
+        "gini": 0.836326,
+        "refs": 2041,
+        "raoStirlingCI": {
+          "lower": 0.367912,
+          "upper": 0.409641,
+          "mean": 0.388859,
+          "median": 0.388911
+        }
+      },
+      "Nursing": {
+        "unit": "Nursing",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.248507,
+        "disparity": 0.867674,
+        "raoStirling": 0.526436,
+        "div": 0.190743,
+        "shannon": 1.966839,
+        "simpson": 0.780015,
+        "gini": 0.751493,
+        "refs": 940,
+        "raoStirlingCI": {
+          "lower": 0.504061,
+          "upper": 0.549559,
+          "mean": 0.526351,
+          "median": 0.52622
+        }
+      },
+      "Pharmacology, Toxicology and Pharmaceutics": {
+        "unit": "Pharmacology, Toxicology and Pharmaceutics",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.258373,
+        "disparity": 0.862494,
+        "raoStirling": 0.573058,
+        "div": 0.179991,
+        "shannon": 1.963585,
+        "simpson": 0.783324,
+        "gini": 0.741627,
+        "refs": 1102,
+        "raoStirlingCI": {
+          "lower": 0.555723,
+          "upper": 0.590942,
+          "mean": 0.573033,
+          "median": 0.573361
+        }
+      },
+      "Dentistry": {
+        "unit": "Dentistry",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.226487,
+        "disparity": 0.851706,
+        "raoStirling": 0.53179,
+        "div": 0.155804,
+        "shannon": 1.713416,
+        "simpson": 0.675184,
+        "gini": 0.773513,
+        "refs": 1084,
+        "raoStirlingCI": {
+          "lower": 0.506764,
+          "upper": 0.554736,
+          "mean": 0.531602,
+          "median": 0.531765
+        }
+      },
+      "Chemical Engineering": {
+        "unit": "Chemical Engineering",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.188784,
+        "disparity": 0.868145,
+        "raoStirling": 0.54857,
+        "div": 0.144982,
+        "shannon": 1.664251,
+        "simpson": 0.689582,
+        "gini": 0.811216,
+        "refs": 1685,
+        "raoStirlingCI": {
+          "lower": 0.531447,
+          "upper": 0.56745,
+          "mean": 0.548128,
+          "median": 0.5482
+        }
+      },
+      "Veterinary": {
+        "unit": "Veterinary",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.285908,
+        "disparity": 0.848476,
+        "raoStirling": 0.593148,
+        "div": 0.205265,
+        "shannon": 2.079208,
+        "simpson": 0.796148,
+        "gini": 0.714092,
+        "refs": 938,
+        "raoStirlingCI": {
+          "lower": 0.571871,
+          "upper": 0.612487,
+          "mean": 0.592821,
+          "median": 0.59269
+        }
+      }
+    },
+    "2023": {
+      "Engineering": {
+        "unit": "Engineering",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.172971,
+        "disparity": 0.855447,
+        "raoStirling": 0.46484,
+        "div": 0.125203,
+        "shannon": 1.493774,
+        "simpson": 0.610918,
+        "gini": 0.827029,
+        "refs": 1270,
+        "raoStirlingCI": {
+          "lower": 0.438747,
+          "upper": 0.487417,
+          "mean": 0.464143,
+          "median": 0.464357
+        }
+      },
+      "Social Sciences": {
+        "unit": "Social Sciences",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.333439,
+        "disparity": 0.835051,
+        "raoStirling": 0.553257,
+        "div": 0.214184,
+        "shannon": 2.06826,
+        "simpson": 0.774769,
+        "gini": 0.666561,
+        "refs": 943,
+        "raoStirlingCI": {
+          "lower": 0.530458,
+          "upper": 0.57171,
+          "mean": 0.552029,
+          "median": 0.552182
+        }
+      },
+      "Medicine": {
+        "unit": "Medicine",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.222191,
+        "disparity": 0.839485,
+        "raoStirling": 0.424475,
+        "div": 0.150656,
+        "shannon": 1.60853,
+        "simpson": 0.616022,
+        "gini": 0.777809,
+        "refs": 1031,
+        "raoStirlingCI": {
+          "lower": 0.397855,
+          "upper": 0.450396,
+          "mean": 0.423154,
+          "median": 0.423572
+        }
+      },
+      "Arts and Humanities": {
+        "unit": "Arts and Humanities",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.279807,
+        "disparity": 0.855845,
+        "raoStirling": 0.570183,
+        "div": 0.20263,
+        "shannon": 2.025966,
+        "simpson": 0.775826,
+        "gini": 0.720193,
+        "refs": 886,
+        "raoStirlingCI": {
+          "lower": 0.543653,
+          "upper": 0.591321,
+          "mean": 0.56832,
+          "median": 0.568226
+        }
+      },
+      "Computer Science": {
+        "unit": "Computer Science",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.150199,
+        "disparity": 0.848635,
+        "raoStirling": 0.278953,
+        "div": 0.093147,
+        "shannon": 1.023133,
+        "simpson": 0.383136,
+        "gini": 0.849801,
+        "refs": 1232,
+        "raoStirlingCI": {
+          "lower": 0.25327,
+          "upper": 0.304019,
+          "mean": 0.278687,
+          "median": 0.279267
+        }
+      },
+      "Agricultural and Biological Sciences": {
+        "unit": "Agricultural and Biological Sciences",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.22181,
+        "disparity": 0.854891,
+        "raoStirling": 0.549701,
+        "div": 0.167744,
+        "shannon": 1.77995,
+        "simpson": 0.690964,
+        "gini": 0.77819,
+        "refs": 984,
+        "raoStirlingCI": {
+          "lower": 0.521828,
+          "upper": 0.571086,
+          "mean": 0.548632,
+          "median": 0.549273
+        }
+      },
+      "Physics and Astronomy": {
+        "unit": "Physics and Astronomy",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.219208,
+        "disparity": 0.870749,
+        "raoStirling": 0.462588,
+        "div": 0.124803,
+        "shannon": 1.373081,
+        "simpson": 0.531828,
+        "gini": 0.780792,
+        "refs": 980,
+        "raoStirlingCI": {
+          "lower": 0.428228,
+          "upper": 0.49363,
+          "mean": 0.461137,
+          "median": 0.461338
+        }
+      },
+      "Biochemistry, Genetics and Molecular Biology": {
+        "unit": "Biochemistry, Genetics and Molecular Biology",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.241736,
+        "disparity": 0.856542,
+        "raoStirling": 0.489305,
+        "div": 0.159274,
+        "shannon": 1.761664,
+        "simpson": 0.706718,
+        "gini": 0.758264,
+        "refs": 1089,
+        "raoStirlingCI": {
+          "lower": 0.464914,
+          "upper": 0.511938,
+          "mean": 0.488878,
+          "median": 0.489265
+        }
+      },
+      "Environmental Science": {
+        "unit": "Environmental Science",
+        "n": 25,
+        "N": 26,
+        "variety": 0.961538,
+        "balance": 0.262755,
+        "disparity": 0.860781,
+        "raoStirling": 0.591616,
+        "div": 0.217476,
+        "shannon": 1.965226,
+        "simpson": 0.710565,
+        "gini": 0.737245,
+        "refs": 1067,
+        "raoStirlingCI": {
+          "lower": 0.564179,
+          "upper": 0.613389,
+          "mean": 0.59056,
+          "median": 0.590653
+        }
+      },
+      "Economics, Econometrics and Finance": {
+        "unit": "Economics, Econometrics and Finance",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.286591,
+        "disparity": 0.854418,
+        "raoStirling": 0.570438,
+        "div": 0.197779,
+        "shannon": 1.921947,
+        "simpson": 0.717447,
+        "gini": 0.713409,
+        "refs": 928,
+        "raoStirlingCI": {
+          "lower": 0.545973,
+          "upper": 0.592747,
+          "mean": 0.569158,
+          "median": 0.569374
+        }
+      },
+      "Materials Science": {
+        "unit": "Materials Science",
+        "n": 18,
+        "N": 26,
+        "variety": 0.692308,
+        "balance": 0.226809,
+        "disparity": 0.862705,
+        "raoStirling": 0.496205,
+        "div": 0.135464,
+        "shannon": 1.603512,
+        "simpson": 0.660026,
+        "gini": 0.773191,
+        "refs": 1308,
+        "raoStirlingCI": {
+          "lower": 0.472244,
+          "upper": 0.517375,
+          "mean": 0.495638,
+          "median": 0.495826
+        }
+      },
+      "Business, Management and Accounting": {
+        "unit": "Business, Management and Accounting",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.291948,
+        "disparity": 0.840195,
+        "raoStirling": 0.54519,
+        "div": 0.179253,
+        "shannon": 1.947744,
+        "simpson": 0.767505,
+        "gini": 0.708052,
+        "refs": 937,
+        "raoStirlingCI": {
+          "lower": 0.522502,
+          "upper": 0.565452,
+          "mean": 0.543774,
+          "median": 0.544137
+        }
+      },
+      "Psychology": {
+        "unit": "Psychology",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.246222,
+        "disparity": 0.84274,
+        "raoStirling": 0.513052,
+        "div": 0.167597,
+        "shannon": 1.903277,
+        "simpson": 0.764387,
+        "gini": 0.753778,
+        "refs": 1043,
+        "raoStirlingCI": {
+          "lower": 0.494296,
+          "upper": 0.527746,
+          "mean": 0.512155,
+          "median": 0.512468
+        }
+      },
+      "Health Professions": {
+        "unit": "Health Professions",
+        "n": 20,
+        "N": 26,
+        "variety": 0.769231,
+        "balance": 0.337653,
+        "disparity": 0.836532,
+        "raoStirling": 0.568285,
+        "div": 0.217275,
+        "shannon": 2.165874,
+        "simpson": 0.822278,
+        "gini": 0.662347,
+        "refs": 900,
+        "raoStirlingCI": {
+          "lower": 0.546834,
+          "upper": 0.585875,
+          "mean": 0.567317,
+          "median": 0.567764
+        }
+      },
+      "Earth and Planetary Sciences": {
+        "unit": "Earth and Planetary Sciences",
+        "n": 19,
+        "N": 26,
+        "variety": 0.730769,
+        "balance": 0.195298,
+        "disparity": 0.862447,
+        "raoStirling": 0.508225,
+        "div": 0.123086,
+        "shannon": 1.54923,
+        "simpson": 0.674876,
+        "gini": 0.804702,
+        "refs": 985,
+        "raoStirlingCI": {
+          "lower": 0.484196,
+          "upper": 0.529447,
+          "mean": 0.507481,
+          "median": 0.507274
+        }
+      },
+      "Chemistry": {
+        "unit": "Chemistry",
+        "n": 18,
+        "N": 26,
+        "variety": 0.692308,
+        "balance": 0.253013,
+        "disparity": 0.860841,
+        "raoStirling": 0.499911,
+        "div": 0.150787,
+        "shannon": 1.616337,
+        "simpson": 0.625654,
+        "gini": 0.746987,
+        "refs": 1346,
+        "raoStirlingCI": {
+          "lower": 0.475525,
+          "upper": 0.523373,
+          "mean": 0.499361,
+          "median": 0.499474
+        }
+      },
+      "Mathematics": {
+        "unit": "Mathematics",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.233486,
+        "disparity": 0.852851,
+        "raoStirling": 0.541514,
+        "div": 0.168494,
+        "shannon": 1.702501,
+        "simpson": 0.637067,
+        "gini": 0.766514,
+        "refs": 952,
+        "raoStirlingCI": {
+          "lower": 0.510093,
+          "upper": 0.568256,
+          "mean": 0.540615,
+          "median": 0.540617
+        }
+      },
+      "Neuroscience": {
+        "unit": "Neuroscience",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.204736,
+        "disparity": 0.840296,
+        "raoStirling": 0.504793,
+        "div": 0.138954,
+        "shannon": 1.673584,
+        "simpson": 0.707407,
+        "gini": 0.795264,
+        "refs": 1102,
+        "raoStirlingCI": {
+          "lower": 0.484558,
+          "upper": 0.523677,
+          "mean": 0.504584,
+          "median": 0.504473
+        }
+      },
+      "Decision Sciences": {
+        "unit": "Decision Sciences",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.267589,
+        "disparity": 0.854656,
+        "raoStirling": 0.534711,
+        "div": 0.193512,
+        "shannon": 2.038051,
+        "simpson": 0.798779,
+        "gini": 0.732411,
+        "refs": 1035,
+        "raoStirlingCI": {
+          "lower": 0.515315,
+          "upper": 0.553176,
+          "mean": 0.534239,
+          "median": 0.534397
+        }
+      },
+      "Immunology and Microbiology": {
+        "unit": "Immunology and Microbiology",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.175831,
+        "disparity": 0.850525,
+        "raoStirling": 0.400529,
+        "div": 0.126541,
+        "shannon": 1.521882,
+        "simpson": 0.683235,
+        "gini": 0.824169,
+        "refs": 1079,
+        "raoStirlingCI": {
+          "lower": 0.380594,
+          "upper": 0.420359,
+          "mean": 0.400139,
+          "median": 0.400027
+        }
+      },
+      "Energy": {
+        "unit": "Energy",
+        "n": 15,
+        "N": 26,
+        "variety": 0.576923,
+        "balance": 0.221062,
+        "disparity": 0.855839,
+        "raoStirling": 0.455551,
+        "div": 0.10915,
+        "shannon": 1.400708,
+        "simpson": 0.596898,
+        "gini": 0.778938,
+        "refs": 1570,
+        "raoStirlingCI": {
+          "lower": 0.433613,
+          "upper": 0.475496,
+          "mean": 0.454971,
+          "median": 0.455498
+        }
+      },
+      "Nursing": {
+        "unit": "Nursing",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.262029,
+        "disparity": 0.854899,
+        "raoStirling": 0.528375,
+        "div": 0.189546,
+        "shannon": 1.973104,
+        "simpson": 0.779823,
+        "gini": 0.737971,
+        "refs": 939,
+        "raoStirlingCI": {
+          "lower": 0.505758,
+          "upper": 0.551376,
+          "mean": 0.528287,
+          "median": 0.528194
+        }
+      },
+      "Pharmacology, Toxicology and Pharmaceutics": {
+        "unit": "Pharmacology, Toxicology and Pharmaceutics",
+        "n": 22,
+        "N": 26,
+        "variety": 0.846154,
+        "balance": 0.250081,
+        "disparity": 0.858183,
+        "raoStirling": 0.570596,
+        "div": 0.181598,
+        "shannon": 1.97879,
+        "simpson": 0.795722,
+        "gini": 0.749919,
+        "refs": 1120,
+        "raoStirlingCI": {
+          "lower": 0.551497,
+          "upper": 0.58905,
+          "mean": 0.570085,
+          "median": 0.569757
+        }
+      },
+      "Dentistry": {
+        "unit": "Dentistry",
+        "n": 21,
+        "N": 26,
+        "variety": 0.807692,
+        "balance": 0.198348,
+        "disparity": 0.849357,
+        "raoStirling": 0.497358,
+        "div": 0.13607,
+        "shannon": 1.516656,
+        "simpson": 0.588063,
+        "gini": 0.801652,
+        "refs": 981,
+        "raoStirlingCI": {
+          "lower": 0.46739,
+          "upper": 0.527555,
+          "mean": 0.497103,
+          "median": 0.497539
+        }
+      },
+      "Chemical Engineering": {
+        "unit": "Chemical Engineering",
+        "n": 17,
+        "N": 26,
+        "variety": 0.653846,
+        "balance": 0.250392,
+        "disparity": 0.860473,
+        "raoStirling": 0.530105,
+        "div": 0.140875,
+        "shannon": 1.668182,
+        "simpson": 0.693429,
+        "gini": 0.749608,
+        "refs": 1426,
+        "raoStirlingCI": {
+          "lower": 0.509953,
+          "upper": 0.54796,
+          "mean": 0.529508,
+          "median": 0.529864
+        }
+      },
+      "Veterinary": {
+        "unit": "Veterinary",
+        "n": 23,
+        "N": 26,
+        "variety": 0.884615,
+        "balance": 0.277907,
+        "disparity": 0.850476,
+        "raoStirling": 0.614479,
+        "div": 0.209081,
+        "shannon": 2.099835,
+        "simpson": 0.799623,
+        "gini": 0.722093,
+        "refs": 957,
+        "raoStirlingCI": {
+          "lower": 0.59649,
+          "upper": 0.631934,
+          "mean": 0.614314,
+          "median": 0.614502
+        }
+      }
+    }
   },
   "drilldown": {
     "Earth and Planetary Sciences × Neuroscience": {

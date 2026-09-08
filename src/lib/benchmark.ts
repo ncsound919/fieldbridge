@@ -22,7 +22,23 @@
  */
 
 import type { EngineConfig } from "./config";
+import { ENGINE_CONFIG } from "./config";
 import { rankGaps, scorePairs, type GapScore, type PairSignals } from "./gaps";
+
+/**
+ * Subfield-level experiment config. Field-level guards (minPubs=100, topK=20)
+ * were tuned for 26 units and would suppress nearly every subfield, so scale
+ * guards adjust while signal thresholds stay identical. Separate experiment,
+ * separate hash, disclosed in the manifest — NOT a re-tune of the field
+ * experiment.
+ */
+export const SUBFIELD_CONFIG: EngineConfig = {
+  ...ENGINE_CONFIG,
+  version: "0.2.0-subfield",
+  topK: 50,
+  minPubs: 5,
+  minCoverage: 0.3,
+};
 
 export interface BenchmarkPair extends PairSignals {
   /** kwSim - kwSimPrior (unbounded). */
@@ -41,6 +57,12 @@ export interface BenchmarkPair extends PairSignals {
    * construction, so they are NOT a size signal.
    */
   refVolume: [number, number];
+  /**
+   * Sum of endpoint fields' Rao-Stirling deltas (current minus prior), set by
+   * the runner. Used by the diversity-growth baseline: pairs whose endpoint
+   * fields are both diversifying. Defaults to 0 when not computed.
+   */
+  divGrowthAB?: number;
 }
 
 export interface BenchmarkWindow {
@@ -104,6 +126,7 @@ export type BaselineName =
   | "lowest-crossflow"
   | "highest-simgrowth"
   | "highest-crossflow-growth"
+  | "highest-diversity-growth"
   | "ablation-gap-only"
   | "ablation-sim-only"
   | "field-size"
@@ -113,6 +136,7 @@ const RANKERS: Record<Exclude<BaselineName, "random" | "full">, (p: BenchmarkPai
   "lowest-crossflow": (p) => -p.crossFlow,
   "highest-simgrowth": (p) => p.simGrowth,
   "highest-crossflow-growth": (p) => p.crossFlowGrowth,
+  "highest-diversity-growth": (p) => p.divGrowthAB ?? 0,
   "ablation-gap-only": (p) => p.simGrowth,
   "ablation-sim-only": (p) => 1 - p.crossFlow / 0.4,
   "field-size": (p) => p.refVolume[0] * p.refVolume[1],

@@ -26,6 +26,7 @@ import {
   buildBenchmarkPairs,
   buildFlowMatrix,
   cosine,
+  diversityOf,
   ENGINE_CONFIG,
   hashObject,
   keywordCounts,
@@ -136,13 +137,20 @@ for (const d of defs) {
     coverage: [coverageOf(cur, a), coverageOf(cur, b)] as [number, number],
     sizes: [cur.sizes[a] ?? 0, cur.sizes[b] ?? 0] as [number, number],
   }));
+  const built = buildBenchmarkPairs(pairs, ENGINE_CONFIG, refVolumeOf(d.current));
+  // Diversity-growth baseline: sum of endpoint fields' RS deltas.
+  const rsCur = new Map(fields.map((f) => [f, diversityOf(cur.flows, f, fields).raoStirling]));
+  const rsPrior = new Map(fields.map((f) => [f, diversityOf(pr.flows, f, fields).raoStirling]));
+  for (const p of built) {
+    p.divGrowthAB = round4((rsCur.get(p.a) ?? 0) - (rsPrior.get(p.a) ?? 0) + (rsCur.get(p.b) ?? 0) - (rsPrior.get(p.b) ?? 0));
+  }
   windows.push({
     current: d.current,
     prior: d.prior,
     horizon: d.horizon,
     heldOut: d.heldOut,
     calibrationWindow: d.calibrationWindow,
-    pairs: buildBenchmarkPairs(pairs, ENGINE_CONFIG, refVolumeOf(d.current)),
+    pairs: built,
     bridged: new Set(),
   });
 }
@@ -171,7 +179,7 @@ const output = {
     bootstrap: { draws: 2000, type: "pair-resampling over eligible population", seed: "deterministic per threshold" },
     generatedAt: new Date().toISOString(),
   },
-  windows: windows.map((w) => ({ current: w.current, prior: w.prior, horizon: w.horizon, heldOut: w.heldOut, calibrationWindow: w.calibrationWindow })),
+    windows: windows.map((w) => ({ current: w.current, prior: w.prior, horizon: w.horizon, heldOut: w.heldOut, calibrationWindow: w.calibrationWindow })),
   thresholds: thresholdsOut,
   primary: primaryOut,
 };
@@ -195,4 +203,8 @@ function coverageOf(st: ReturnType<typeof yearState>, f: string): number {
   const row = st.flows[f];
   if (!row || row._total_refs === 0) return 0;
   return row._total_refs_resolved / row._total_refs;
+}
+
+function round4(n: number): number {
+  return Math.round(n * 10_000) / 10_000;
 }

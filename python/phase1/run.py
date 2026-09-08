@@ -95,7 +95,7 @@ def list_fields():
     return [(f["display_name"], f["id"].rsplit("/", 1)[-1]) for f in data.get("results", [])]
 
 
-def sample_works(field_id, pub_year, sample_size, select="id,abstract_inverted_index,referenced_works"):
+def sample_works(field_id, pub_year, sample_size, select="id,abstract_inverted_index,referenced_works,primary_topic"):
     """Cursor-page recent works in a field+year. Returns list of work dicts."""
     works, cursor = [], "*"
     flt = (f"primary_topic.field.id:{field_id},publication_year:{pub_year},"
@@ -114,8 +114,13 @@ def sample_works(field_id, pub_year, sample_size, select="id,abstract_inverted_i
     return works[:sample_size]
 
 
-def resolve_cited_fields(ref_ids, cache):
-    """Batch-resolve the field of cited work IDs (50 per request). Updates cache.
+def resolve_cited_fields(ref_ids, cache, sub_cache):
+    """Batch-resolve the field AND subfield of cited work IDs (50 per request).
+
+    Field-level resolution keeps the 26-column matrix (legacy). Subfield-level
+    resolution (OpenAlex: 252 subfields) is the granularity at which
+    interdisciplinary link prediction is statistically viable (~31k pairs vs
+    325), per the science-of-science literature (FOS benchmark, arXiv 2025).
 
     Outside-field display names keep their raw name and count toward `total`
     refs but not any tracked column (see buildFlowMatrix denominator).
@@ -132,9 +137,12 @@ def resolve_cited_fields(ref_ids, cache):
         for w in data.get("results", []):
             topic = w.get("primary_topic") or {}
             field = (topic.get("field") or {})
+            subfield = (topic.get("subfield") or {})
             cache[w["id"]] = field.get("display_name", "Unknown")
+            sub_cache[w["id"]] = subfield.get("display_name", "Unknown")
     for w in todo:
         cache.setdefault(w, None)
+        sub_cache.setdefault(w, None)
 
 
 def deterministic_subset(refs, cap):
@@ -175,18 +183,30 @@ def main():
 
     works_by_field = {}
     cited_cache = {}
+    sub_cache = {}
+    work_subfields = {}
     for display_name, fid in fields:
         works_by_field[display_name] = {}
         for year in years:
             print(f"sampling {display_name} ({fid}) {year}...")
             works = sample_works(fid, year, args.sample)
             works_by_field[display_name][str(year)] = works
+            # Record each sampled work's own subfield (primary_topic.subfield).
+            # Needed to group works by subfield for a true subfield×subfield
+            # flow matrix; sampling is field-stratified but the works' own
+            # granularity is finer.
+            for w in works:
+                topic = w.get("primary_topic") or {}
+                subfield = (topic.get("subfield") or {}).get("display_name", "Unknown")
+                work_subfields[w["id"]] = subfield
+                # keep the snapshot lean: strip the nested topic from the work
+                w.pop("primary_topic", None)
             refs = deterministic_subset(
                 {r for w in works for r in (w.get("referenced_works") or [])},
                 args.max_refs,
             )
             print(f"  {len(works)} works, {len(refs)} refs to resolve")
-            resolve_cited_fields(list(refs), cited_cache)
+            resolve_cited_fields(list(refs), cited_cache, sub_cache)
 
     out = {
         "meta": {
@@ -198,6 +218,8 @@ def main():
         },
         "works": works_by_field,
         "cited_fields": cited_cache,
+        "cited_subfields": sub_cache,
+        "work_subfields": work_subfields,
     }
     with open(args.out, "w") as fh:
         json.dump(out, fh, indent=2)

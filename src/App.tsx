@@ -110,6 +110,34 @@ interface BenchmarkData {
   };
 }
 
+interface DiversityField {
+  unit: string;
+  n: number;
+  N: number;
+  variety: number;
+  balance: number;
+  disparity: number;
+  raoStirling: number;
+  div: number;
+  shannon: number;
+  simpson: number;
+  gini: number;
+  refs: number;
+  raoStirlingCI: { lower: number; upper: number; mean: number; median: number };
+}
+
+interface ConvergingPair {
+  pair: string;
+  a: string;
+  b: string;
+  growthAB: number;
+  growthBA: number;
+  zAB: number;
+  zBA: number;
+  reciprocal: boolean;
+  convergenceStrength: number;
+}
+
 interface Artifact {
   manifest: Manifest;
   fields: string[];
@@ -120,8 +148,9 @@ interface Artifact {
   sizes: Record<string, number>;
   keywordOverlap: Record<string, number>;
   gaps: { surfaced: GapScore[]; suppressed: GapScore[]; signalCount: number };
-  trends: { closing: ClosingGap[]; emerging: EmergingGap[]; series: TrendSeries[] };
+  trends: { closing: ClosingGap[]; emerging: EmergingGap[]; converging?: ConvergingPair[]; series: TrendSeries[] };
   drilldown: Record<string, { sharedKeywords: string[]; bridgePapers: number }>;
+  diversity?: Record<string, Record<string, DiversityField>>;
 }
 
 const LOW_COVERAGE = 0.5;
@@ -130,6 +159,7 @@ export function App() {
   const [artifact, setArtifact] = useState<Artifact | null>(null);
   const [validation, setValidation] = useState<ValidationData | null>(null);
   const [benchmark, setBenchmark] = useState<BenchmarkData | null>(null);
+  const [subfieldBenchmark, setSubfieldBenchmark] = useState<BenchmarkData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<[string, string] | null>(null);
   const [showSuppressed, setShowSuppressed] = useState(false);
@@ -146,11 +176,15 @@ export function App() {
       fetch("benchmark.json")
         .then((r) => (r.ok ? r.json() : null))
         .catch(() => null),
+      fetch("subfield-benchmark.json")
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
     ])
-      .then(([a, v, b]) => {
+      .then(([a, v, b, sb]) => {
         setArtifact(a);
         setValidation(v);
         setBenchmark(b);
+        setSubfieldBenchmark(sb);
       })
       .catch((e) => setError(String(e.message ?? e)));
   }, []);
@@ -172,7 +206,14 @@ export function App() {
   return (
     <div className="shell">
       <header>
-        <h1>FieldBridge</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <img
+            src="overlay-fieldbridge-logo.png"
+            alt="Overlay FieldBridge logo"
+            style={{ height: 44, width: 'auto', borderRadius: 8 }}
+          />
+          <h1>FieldBridge</h1>
+        </div>
         <p className="subtitle">
           Where disciplines connect, where they don't, and which gaps are closing — computed
           deterministically from OpenAlex data.
@@ -259,6 +300,10 @@ export function App() {
 
       {validation && <ValidationPanel validation={validation} />}
       {benchmark && <BenchmarkPanel benchmark={benchmark} />}
+      {subfieldBenchmark && (
+        <BenchmarkPanel benchmark={subfieldBenchmark} title="Subfield-level prediction benchmark" />
+      )}
+      <DiversityPanel artifact={artifact} />
 
       <footer className="panel manifest">
         <h2>Run manifest</h2>
@@ -468,13 +513,13 @@ function ValidationPanel({ validation }: { validation: ValidationData }) {
   );
 }
 
-function BenchmarkPanel({ benchmark }: { benchmark: BenchmarkData }) {
+function BenchmarkPanel({ benchmark, title }: { benchmark: BenchmarkData; title?: string }) {
   const { primary } = benchmark;
   const verdictClass = primary.verdict.state === "PASS" ? "ok" : primary.verdict.state === "PENDING" ? "" : "warn";
   return (
     <section className="panel">
       <h2>
-        Prediction benchmark{" "}
+        {title ?? "Prediction benchmark"}{" "}
         <span className="muted">(rolling-origin, held-out windows, explicit baselines)</span>
       </h2>
       <p className="muted note">
@@ -539,6 +584,59 @@ function BenchmarkPanel({ benchmark }: { benchmark: BenchmarkData }) {
         justify its formula. If it ties or loses to them (or to random), the formula is descriptive,
         not predictive — that is a finding, not a defect.
       </p>
+    </section>
+  );
+}
+
+function DiversityPanel({ artifact }: { artifact: Artifact }) {
+  const year = String(artifact.years[artifact.years.length - 1]);
+  const rows = artifact.diversity?.[year];
+  if (!rows) return null;
+  const ranked = Object.values(rows)
+    .filter((r) => r.N > 0)
+    .sort((x, y) => y.raoStirling - x.raoStirling);
+  return (
+    <section className="panel">
+      <h2>
+        Interdisciplinarity indices <span className="muted">(canonical metrics, {year})</span>
+      </h2>
+      <p className="muted note">
+        Rao-Stirling diversity, Leydesdorff DIV (variety × balance × disparity), Shannon, and
+        Simpson per field — computed on open data with bootstrap 95% CIs for Rao-Stirling. These
+        are the indices institutional evaluators use (HCERES-OST, German PROs), published here
+        transparently.
+      </p>
+      <table className="validation-table">
+        <thead>
+          <tr>
+            <th>field</th>
+            <th>Rao-Stirling [95% CI]</th>
+            <th>DIV</th>
+            <th>variety</th>
+            <th>balance</th>
+            <th>disparity</th>
+            <th>Shannon</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ranked.map((r) => (
+            <tr key={r.unit}>
+              <td>{r.unit}</td>
+              <td>
+                {r.raoStirling.toFixed(3)}{" "}
+                <span className="muted">
+                  [{r.raoStirlingCI.lower.toFixed(3)}..{r.raoStirlingCI.upper.toFixed(3)}]
+                </span>
+              </td>
+              <td>{r.div.toFixed(3)}</td>
+              <td>{r.variety.toFixed(2)}</td>
+              <td>{r.balance.toFixed(2)}</td>
+              <td>{r.disparity.toFixed(2)}</td>
+              <td>{r.shannon.toFixed(2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </section>
   );
 }

@@ -8,6 +8,7 @@ __pycache__/
 !.env.example
 phase0_results.json
 phase1_results.json
+phase1_subfield_results.json
 data/
 .selfhosted/
 .vercel/
