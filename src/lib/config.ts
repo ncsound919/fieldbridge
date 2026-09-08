@@ -30,7 +30,7 @@ export interface EngineConfig {
 }
 
 export const ENGINE_CONFIG: EngineConfig = {
-  version: "0.1.0",
+  version: "0.2.0",
   sampleSize: 500,
   windowYears: 5,
   topKeywords: 200,

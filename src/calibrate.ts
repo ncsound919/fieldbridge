@@ -185,6 +185,8 @@ const recommended: EngineConfig = best
 const output = {
   manifest: {
     engine: `fieldbridge@${ENGINE_CONFIG.version}`,
+    configHash: hashObject(ENGINE_CONFIG),
+    config: ENGINE_CONFIG,
     configHashBefore: hashObject(ENGINE_CONFIG),
     configHashAfter: hashObject(recommended),
     method: "grid search over densityNorm x minCitationGap x minSimGrowth; objective = mean lift on scored@2020->2023 (threshold 0.5%,1.0%); held-out check scored@2017->2023 (threshold 1.0%); qualify 5..40 surfaced; ties break to current defaults",

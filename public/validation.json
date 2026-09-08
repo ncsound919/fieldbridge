@@ -1,10 +1,22 @@
 {
   "manifest": {
-    "engine": "fieldbridge@0.1.0",
-    "configHash": "a39716b0",
+    "engine": "fieldbridge@0.2.0",
+    "configHash": "906efd5f",
+    "config": {
+      "version": "0.2.0",
+      "sampleSize": 500,
+      "windowYears": 5,
+      "topKeywords": 200,
+      "minCoverage": 0.5,
+      "minPubs": 100,
+      "minCitationGap": 0.7,
+      "minSimGrowth": 0.05,
+      "densityNorm": 0.4,
+      "topK": 20
+    },
     "snapshot": "python/phase1/phase1_results.json",
     "method": "score at (current, prior), check cross-flow at horizon; threshold sweep, base-rate reported",
-    "generatedAt": "2026-09-08T01:36:24.217Z"
+    "generatedAt": "2026-09-08T03:56:53.301Z"
   },
   "fields": 26,
   "years": [

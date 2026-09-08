@@ -73,6 +73,43 @@ interface ValidationData {
   windows: ValidationWindow[];
 }
 
+interface BenchmarkCI {
+  lower: number;
+  upper: number;
+  mean: number;
+  median: number;
+}
+
+interface BenchmarkBaseline {
+  name: string;
+  hitRate: number;
+  baseRate: number;
+  lift: number | null;
+}
+
+interface BenchmarkWindowResult {
+  current: number;
+  prior: number;
+  horizon: number;
+  heldOut: boolean;
+  calibrationWindow: boolean;
+  hitRate: number;
+  baseRate: number;
+  lift: number | null;
+  liftCI: BenchmarkCI | null;
+  baselines: BenchmarkBaseline[];
+}
+
+interface BenchmarkData {
+  manifest: Manifest;
+  primary: {
+    windows: BenchmarkWindowResult[];
+    pooled: BenchmarkBaseline | null;
+    verdict: { passed: boolean; state: string; reason: string };
+    successThreshold: { lowerCILift: number; consecutiveWindows: number };
+  };
+}
+
 interface Artifact {
   manifest: Manifest;
   fields: string[];
@@ -92,6 +129,7 @@ const LOW_COVERAGE = 0.5;
 export function App() {
   const [artifact, setArtifact] = useState<Artifact | null>(null);
   const [validation, setValidation] = useState<ValidationData | null>(null);
+  const [benchmark, setBenchmark] = useState<BenchmarkData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<[string, string] | null>(null);
   const [showSuppressed, setShowSuppressed] = useState(false);
@@ -105,10 +143,14 @@ export function App() {
       fetch("validation.json")
         .then((r) => (r.ok ? r.json() : null))
         .catch(() => null),
+      fetch("benchmark.json")
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
     ])
-      .then(([a, v]) => {
+      .then(([a, v, b]) => {
         setArtifact(a);
         setValidation(v);
+        setBenchmark(b);
       })
       .catch((e) => setError(String(e.message ?? e)));
   }, []);
@@ -216,6 +258,7 @@ export function App() {
       </section>
 
       {validation && <ValidationPanel validation={validation} />}
+      {benchmark && <BenchmarkPanel benchmark={benchmark} />}
 
       <footer className="panel manifest">
         <h2>Run manifest</h2>
@@ -420,6 +463,81 @@ function ValidationPanel({ validation }: { validation: ValidationData }) {
         Caveat: "bridged" is defined on this snapshot's own horizon-year data (self-consistency).
         External validation (did new cross-field papers actually publish and cite across the pair)
         accrues as the nightly job accumulates fresh snapshots.
+      </p>
+    </section>
+  );
+}
+
+function BenchmarkPanel({ benchmark }: { benchmark: BenchmarkData }) {
+  const { primary } = benchmark;
+  const verdictClass = primary.verdict.state === "PASS" ? "ok" : primary.verdict.state === "PENDING" ? "" : "warn";
+  return (
+    <section className="panel">
+      <h2>
+        Prediction benchmark{" "}
+        <span className="muted">(rolling-origin, held-out windows, explicit baselines)</span>
+      </h2>
+      <p className="muted note">
+        The engine is only allowed the word <b>"predictive"</b> after it beats simple baselines on
+        time windows it was never fitted on. Pre-registered success threshold: lower 95% CI of lift{" "}
+        &gt; {primary.successThreshold.lowerCILift} on {primary.successThreshold.consecutiveWindows}{" "}
+        consecutive held-out windows.
+      </p>
+      <div className={`verdict ${verdictClass}`}>
+        <b>Verdict: {primary.verdict.state}</b> — {primary.verdict.reason}
+      </div>
+      {primary.pooled && (
+        <p className="muted note">
+          Pooled held-out lift: {primary.pooled.lift === null ? "—" : `${primary.pooled.lift.toFixed(2)}×`}{" "}
+          (hit {primary.pooled.hitRate.toFixed(2)} vs base {primary.pooled.baseRate.toFixed(2)}).
+        </p>
+      )}
+      {primary.windows.map((w, i) => {
+        const tag = w.heldOut ? "held-out" : w.calibrationWindow ? "calibration window" : "nowcast";
+        return (
+          <div key={i} className="benchmark-window">
+            <h3>
+              scored@{w.current} → {w.horizon}{" "}
+              <span className={`muted tag ${w.heldOut ? "ok" : ""}`}>{tag}</span>{" "}
+              <span className="muted">
+                lift {w.lift === null ? "—" : `${w.lift.toFixed(2)}×`} (95% CI{" "}
+                {w.liftCI ? `${w.liftCI.lower.toFixed(2)}..${w.liftCI.upper.toFixed(2)}` : "—"})
+              </span>
+            </h3>
+            <table className="validation-table">
+              <thead>
+                <tr>
+                  <th>baseline</th>
+                  <th>hit-rate</th>
+                  <th>base-rate</th>
+                  <th>lift</th>
+                </tr>
+              </thead>
+              <tbody>
+                {w.baselines.map((bl, j) => {
+                  const beats = bl.lift !== null && bl.lift >= 1;
+                  const isFull = bl.name === "full";
+                  return (
+                    <tr key={j} className={isFull ? "row-good" : ""}>
+                      <td>
+                        {bl.name}
+                        {isFull ? " (engine)" : ""}
+                      </td>
+                      <td className={beats ? "ok" : "warn"}>{bl.hitRate.toFixed(2)}</td>
+                      <td>{bl.baseRate.toFixed(2)}</td>
+                      <td>{bl.lift === null ? "—" : `${bl.lift.toFixed(2)}×`}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+      })}
+      <p className="muted note">
+        The engine's score must beat <b>highest-simgrowth</b> and <b>highest-crossflow-growth</b> to
+        justify its formula. If it ties or loses to them (or to random), the formula is descriptive,
+        not predictive — that is a finding, not a defect.
       </p>
     </section>
   );

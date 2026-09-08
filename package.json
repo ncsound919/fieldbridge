@@ -13,6 +13,7 @@
     "artifact": "tsx src/artifact.ts",
     "validate": "tsx src/validate-run.ts",
     "calibrate": "tsx src/calibrate.ts",
+    "benchmark": "tsx src/benchmark-run.ts",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

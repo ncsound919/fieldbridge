@@ -305,6 +305,40 @@ header h1 {
   background: rgba(74, 222, 128, 0.06);
 }
 
+/* benchmark verdict + windows */
+.verdict {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.verdict.warn {
+  border-color: rgba(251, 146, 60, 0.5);
+  background: rgba(251, 146, 60, 0.08);
+}
+
+.verdict.ok {
+  border-color: rgba(74, 222, 128, 0.5);
+  background: rgba(74, 222, 128, 0.08);
+}
+
+.benchmark-window {
+  margin: 14px 0;
+}
+
+.benchmark-window h3 {
+  margin: 10px 0 6px;
+  font-size: 14px;
+}
+
+.tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 /* keyword chips in drilldown */
 .kw-chips {
   display: flex;

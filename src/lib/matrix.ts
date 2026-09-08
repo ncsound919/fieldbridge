@@ -24,11 +24,13 @@ export function buildFlowMatrix(
   citedFieldCache: CitedFieldCache,
   fields: readonly string[] = FIELDS,
 ): FlowMatrix {
+  const tracked = new Set<string>(fields);
   const flows = {} as FlowMatrix;
   for (const a of fields) {
     const counts = new Map<string, number>();
     let total = 0;
     let resolved = 0;
+    let resolvedTracked = 0;
     for (const w of worksByField[a] ?? []) {
       for (const rid of w.referenced_works ?? []) {
         if (!citedFieldCache.has(rid)) continue;
@@ -37,6 +39,7 @@ export function buildFlowMatrix(
         if (f != null) {
           counts.set(f, (counts.get(f) ?? 0) + 1);
           resolved += 1;
+          if (tracked.has(f)) resolvedTracked += 1;
         }
       }
     }
@@ -44,6 +47,7 @@ export function buildFlowMatrix(
     for (const b of fields) row[b] = resolved ? (counts.get(b) ?? 0) / resolved : 0;
     row._total_refs = total;
     row._total_refs_resolved = resolved;
+    row._total_refs_resolved_tracked = resolvedTracked;
     flows[a] = row;
   }
   return flows;
@@ -69,6 +73,7 @@ export function normalizeFlow(
 ): NormalizedFlow {
   const per1k = {} as Record<string, Record<string, number>>;
   const coverage = {} as Record<string, number>;
+  const resolution = {} as NormalizedFlow["resolution"];
   for (const a of fields) {
     const row = {} as Record<string, number>;
     const resolved = flows[a]?._total_refs_resolved ?? 0;
@@ -79,6 +84,27 @@ export function normalizeFlow(
     }
     per1k[a] = row;
     coverage[a] = total > 0 ? resolved / total : 0;
+    resolution[a] = {
+      allResolved: resolved,
+      trackedResolved: flows[a]?._total_refs_resolved_tracked ?? resolved,
+    };
   }
-  return { per1k, coverage, sizes };
+  return { per1k, coverage, sizes, resolution };
+}
+
+/**
+ * Tracked-universe flow share: a->b citations / citations from a to any
+ * TRACKED field. Unlike the global share (row sums to <1 when references
+ * resolve outside the tracked universe), this always sums to 1 across the
+ * tracked fields. Use it when comparing pairs across fields, because it is
+ * not confounded by taxonomy coverage.
+ */
+export function trackedFlowShare(
+  flows: FlowMatrix,
+  a: string,
+  b: string,
+): number {
+  const tracked = flows[a]?._total_refs_resolved_tracked ?? flows[a]?._total_refs_resolved ?? 0;
+  if (tracked === 0) return 0;
+  return (flows[a]?.[b] ?? 0) * ((flows[a]?._total_refs_resolved ?? 0) / tracked);
 }

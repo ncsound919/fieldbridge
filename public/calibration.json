@@ -1,10 +1,23 @@
 {
   "manifest": {
-    "engine": "fieldbridge@0.1.0",
-    "configHashBefore": "37acaeb7",
-    "configHashAfter": "a39716b0",
+    "engine": "fieldbridge@0.2.0",
+    "configHash": "906efd5f",
+    "config": {
+      "version": "0.2.0",
+      "sampleSize": 500,
+      "windowYears": 5,
+      "topKeywords": 200,
+      "minCoverage": 0.5,
+      "minPubs": 100,
+      "minCitationGap": 0.7,
+      "minSimGrowth": 0.05,
+      "densityNorm": 0.4,
+      "topK": 20
+    },
+    "configHashBefore": "906efd5f",
+    "configHashAfter": "906efd5f",
     "method": "grid search over densityNorm x minCitationGap x minSimGrowth; objective = mean lift on scored@2020->2023 (threshold 0.5%,1.0%); held-out check scored@2017->2023 (threshold 1.0%); qualify 5..40 surfaced; ties break to current defaults",
-    "generatedAt": "2026-09-08T01:34:08.723Z"
+    "generatedAt": "2026-09-08T04:04:33.107Z"
   },
   "grid": {
     "densityNorm": [
@@ -24,7 +37,7 @@
     ]
   },
   "currentDefaults": {
-    "densityNorm": 0.2,
+    "densityNorm": 0.4,
     "minCitationGap": 0.7,
     "minSimGrowth": 0.05
   },
@@ -39,7 +52,7 @@
     "heldOutHitRate": 0.55
   },
   "recommended": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "sampleSize": 500,
     "windowYears": 5,
     "topKeywords": 200,

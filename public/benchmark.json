@@ -1,0 +1,1086 @@
+{
+  "manifest": {
+    "engine": "fieldbridge@0.2.0",
+    "configHash": "906efd5f",
+    "config": {
+      "version": "0.2.0",
+      "sampleSize": 500,
+      "windowYears": 5,
+      "topKeywords": 200,
+      "minCoverage": 0.5,
+      "minPubs": 100,
+      "minCitationGap": 0.7,
+      "minSimGrowth": 0.05,
+      "densityNorm": 0.4,
+      "topK": 20
+    },
+    "snapshot": "python/phase1/phase1_results.json",
+    "method": "rolling-origin; frozen ENGINE_CONFIG; held-out windows excluded from calibration; ground truth = cross-flow >= threshold at horizon",
+    "primaryThreshold": 0.01,
+    "thresholdsSwept": [
+      0.005,
+      0.01,
+      0.02
+    ],
+    "bootstrap": {
+      "draws": 2000,
+      "type": "pair-resampling over eligible population",
+      "seed": "deterministic per threshold"
+    },
+    "generatedAt": "2026-09-08T04:04:24.864Z"
+  },
+  "windows": [
+    {
+      "current": 2017,
+      "prior": 2014,
+      "horizon": 2020,
+      "heldOut": true,
+      "calibrationWindow": false
+    },
+    {
+      "current": 2020,
+      "prior": 2017,
+      "horizon": 2023,
+      "heldOut": false,
+      "calibrationWindow": true
+    }
+  ],
+  "thresholds": {
+    "0.005": {
+      "windows": [
+        {
+          "current": 2017,
+          "prior": 2014,
+          "horizon": 2020,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 37,
+          "surfaced": 20,
+          "bridged": 14,
+          "hitRate": 0.7,
+          "baseRate": 0.5946,
+          "lift": 1.1773,
+          "precisionAtK": [
+            1,
+            0.5,
+            0.6667,
+            0.5,
+            0.4,
+            0.5,
+            0.5714,
+            0.625,
+            0.6667,
+            0.7,
+            0.7273,
+            0.75,
+            0.7692,
+            0.7143,
+            0.7333,
+            0.6875,
+            0.6471,
+            0.6667,
+            0.6842,
+            0.7
+          ],
+          "liftCI": {
+            "lower": 0.8043,
+            "upper": 1.3875,
+            "mean": 1.0989,
+            "median": 1.0932
+          },
+          "hitRateCI": {
+            "lower": 0.4,
+            "upper": 0.85,
+            "mean": 0.65,
+            "median": 0.65
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 20,
+              "bridged": 15,
+              "hitRate": 0.75,
+              "baseRate": 0.5946,
+              "lift": 1.2614
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 20,
+              "bridged": 5,
+              "hitRate": 0.25,
+              "baseRate": 0.5946,
+              "lift": 0.4205
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 20,
+              "bridged": 14,
+              "hitRate": 0.7,
+              "baseRate": 0.5946,
+              "lift": 1.1773
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 20,
+              "bridged": 13,
+              "hitRate": 0.65,
+              "baseRate": 0.5946,
+              "lift": 1.0932
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 20,
+              "bridged": 14,
+              "hitRate": 0.7,
+              "baseRate": 0.5946,
+              "lift": 1.1773
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 20,
+              "bridged": 5,
+              "hitRate": 0.25,
+              "baseRate": 0.5946,
+              "lift": 0.4205
+            },
+            {
+              "name": "field-size",
+              "surfaced": 20,
+              "bridged": 11,
+              "hitRate": 0.55,
+              "baseRate": 0.5946,
+              "lift": 0.925
+            },
+            {
+              "name": "full",
+              "surfaced": 20,
+              "bridged": 14,
+              "hitRate": 0.7,
+              "baseRate": 0.5946,
+              "lift": 1.1773
+            }
+          ]
+        },
+        {
+          "current": 2020,
+          "prior": 2017,
+          "horizon": 2023,
+          "heldOut": false,
+          "calibrationWindow": true,
+          "eligible": 107,
+          "surfaced": 20,
+          "bridged": 17,
+          "hitRate": 0.85,
+          "baseRate": 0.729,
+          "lift": 1.166,
+          "precisionAtK": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0.9231,
+            0.9286,
+            0.8667,
+            0.875,
+            0.8824,
+            0.8889,
+            0.8947,
+            0.85
+          ],
+          "liftCI": {
+            "lower": 0.9727,
+            "upper": 1.3925,
+            "mean": 1.1854,
+            "median": 1.1889
+          },
+          "hitRateCI": {
+            "lower": 0.7,
+            "upper": 1,
+            "mean": 0.8652,
+            "median": 0.85
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 20,
+              "bridged": 13,
+              "hitRate": 0.65,
+              "baseRate": 0.729,
+              "lift": 0.8917
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 20,
+              "bridged": 3,
+              "hitRate": 0.15,
+              "baseRate": 0.729,
+              "lift": 0.2058
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 20,
+              "bridged": 18,
+              "hitRate": 0.9,
+              "baseRate": 0.729,
+              "lift": 1.2346
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 20,
+              "bridged": 20,
+              "hitRate": 1,
+              "baseRate": 0.729,
+              "lift": 1.3718
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 20,
+              "bridged": 18,
+              "hitRate": 0.9,
+              "baseRate": 0.729,
+              "lift": 1.2346
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 20,
+              "bridged": 3,
+              "hitRate": 0.15,
+              "baseRate": 0.729,
+              "lift": 0.2058
+            },
+            {
+              "name": "field-size",
+              "surfaced": 20,
+              "bridged": 14,
+              "hitRate": 0.7,
+              "baseRate": 0.729,
+              "lift": 0.9603
+            },
+            {
+              "name": "full",
+              "surfaced": 20,
+              "bridged": 17,
+              "hitRate": 0.85,
+              "baseRate": 0.729,
+              "lift": 1.166
+            }
+          ]
+        }
+      ],
+      "pooled": {
+        "name": "pooled-held-out",
+        "surfaced": 20,
+        "bridged": 14,
+        "hitRate": 0.7,
+        "baseRate": 0.5946,
+        "lift": 1.1773
+      },
+      "successThreshold": {
+        "lowerCILift": 1.1,
+        "consecutiveWindows": 2
+      },
+      "verdict": {
+        "passed": false,
+        "state": "PENDING",
+        "reason": "only 1 held-out window(s) exist; 2 consecutive held-out windows required before a predictive claim"
+      },
+      "config": {
+        "version": "0.2.0",
+        "sampleSize": 500,
+        "windowYears": 5,
+        "topKeywords": 200,
+        "minCoverage": 0.5,
+        "minPubs": 100,
+        "minCitationGap": 0.7,
+        "minSimGrowth": 0.05,
+        "densityNorm": 0.4,
+        "topK": 20
+      }
+    },
+    "0.01": {
+      "windows": [
+        {
+          "current": 2017,
+          "prior": 2014,
+          "horizon": 2020,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 37,
+          "surfaced": 20,
+          "bridged": 10,
+          "hitRate": 0.5,
+          "baseRate": 0.4595,
+          "lift": 1.0882,
+          "precisionAtK": [
+            1,
+            0.5,
+            0.3333,
+            0.25,
+            0.2,
+            0.3333,
+            0.4286,
+            0.375,
+            0.4444,
+            0.5,
+            0.4545,
+            0.5,
+            0.4615,
+            0.4286,
+            0.4667,
+            0.4375,
+            0.4118,
+            0.4444,
+            0.4737,
+            0.5
+          ],
+          "liftCI": {
+            "lower": 0.6167,
+            "upper": 1.3567,
+            "mean": 0.986,
+            "median": 0.9867
+          },
+          "hitRateCI": {
+            "lower": 0.25,
+            "upper": 0.7,
+            "mean": 0.4532,
+            "median": 0.45
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 20,
+              "bridged": 11,
+              "hitRate": 0.55,
+              "baseRate": 0.4595,
+              "lift": 1.1971
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 20,
+              "bridged": 1,
+              "hitRate": 0.05,
+              "baseRate": 0.4595,
+              "lift": 0.1088
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 20,
+              "bridged": 10,
+              "hitRate": 0.5,
+              "baseRate": 0.4595,
+              "lift": 1.0882
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 20,
+              "bridged": 11,
+              "hitRate": 0.55,
+              "baseRate": 0.4595,
+              "lift": 1.1971
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 20,
+              "bridged": 10,
+              "hitRate": 0.5,
+              "baseRate": 0.4595,
+              "lift": 1.0882
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 20,
+              "bridged": 1,
+              "hitRate": 0.05,
+              "baseRate": 0.4595,
+              "lift": 0.1088
+            },
+            {
+              "name": "field-size",
+              "surfaced": 20,
+              "bridged": 10,
+              "hitRate": 0.5,
+              "baseRate": 0.4595,
+              "lift": 1.0882
+            },
+            {
+              "name": "full",
+              "surfaced": 20,
+              "bridged": 10,
+              "hitRate": 0.5,
+              "baseRate": 0.4595,
+              "lift": 1.0882
+            }
+          ]
+        },
+        {
+          "current": 2020,
+          "prior": 2017,
+          "horizon": 2023,
+          "heldOut": false,
+          "calibrationWindow": true,
+          "eligible": 107,
+          "surfaced": 20,
+          "bridged": 15,
+          "hitRate": 0.75,
+          "baseRate": 0.6075,
+          "lift": 1.2346,
+          "precisionAtK": [
+            1,
+            1,
+            0.6667,
+            0.75,
+            0.8,
+            0.6667,
+            0.7143,
+            0.75,
+            0.7778,
+            0.8,
+            0.8182,
+            0.8333,
+            0.7692,
+            0.7857,
+            0.7333,
+            0.75,
+            0.7647,
+            0.7778,
+            0.7895,
+            0.75
+          ],
+          "liftCI": {
+            "lower": 0.8654,
+            "upper": 1.5286,
+            "mean": 1.2019,
+            "median": 1.2056
+          },
+          "hitRateCI": {
+            "lower": 0.5,
+            "upper": 0.9,
+            "mean": 0.7297,
+            "median": 0.75
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 20,
+              "bridged": 11,
+              "hitRate": 0.55,
+              "baseRate": 0.6075,
+              "lift": 0.9054
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 20,
+              "bridged": 1,
+              "hitRate": 0.05,
+              "baseRate": 0.6075,
+              "lift": 0.0823
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 20,
+              "bridged": 16,
+              "hitRate": 0.8,
+              "baseRate": 0.6075,
+              "lift": 1.3169
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 20,
+              "bridged": 19,
+              "hitRate": 0.95,
+              "baseRate": 0.6075,
+              "lift": 1.5638
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 20,
+              "bridged": 16,
+              "hitRate": 0.8,
+              "baseRate": 0.6075,
+              "lift": 1.3169
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 20,
+              "bridged": 1,
+              "hitRate": 0.05,
+              "baseRate": 0.6075,
+              "lift": 0.0823
+            },
+            {
+              "name": "field-size",
+              "surfaced": 20,
+              "bridged": 13,
+              "hitRate": 0.65,
+              "baseRate": 0.6075,
+              "lift": 1.07
+            },
+            {
+              "name": "full",
+              "surfaced": 20,
+              "bridged": 15,
+              "hitRate": 0.75,
+              "baseRate": 0.6075,
+              "lift": 1.2346
+            }
+          ]
+        }
+      ],
+      "pooled": {
+        "name": "pooled-held-out",
+        "surfaced": 20,
+        "bridged": 10,
+        "hitRate": 0.5,
+        "baseRate": 0.4595,
+        "lift": 1.0882
+      },
+      "successThreshold": {
+        "lowerCILift": 1.1,
+        "consecutiveWindows": 2
+      },
+      "verdict": {
+        "passed": false,
+        "state": "PENDING",
+        "reason": "only 1 held-out window(s) exist; 2 consecutive held-out windows required before a predictive claim"
+      },
+      "config": {
+        "version": "0.2.0",
+        "sampleSize": 500,
+        "windowYears": 5,
+        "topKeywords": 200,
+        "minCoverage": 0.5,
+        "minPubs": 100,
+        "minCitationGap": 0.7,
+        "minSimGrowth": 0.05,
+        "densityNorm": 0.4,
+        "topK": 20
+      }
+    },
+    "0.02": {
+      "windows": [
+        {
+          "current": 2017,
+          "prior": 2014,
+          "horizon": 2020,
+          "heldOut": true,
+          "calibrationWindow": false,
+          "eligible": 37,
+          "surfaced": 20,
+          "bridged": 7,
+          "hitRate": 0.35,
+          "baseRate": 0.3243,
+          "lift": 1.0792,
+          "precisionAtK": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.1667,
+            0.2857,
+            0.25,
+            0.2222,
+            0.3,
+            0.2727,
+            0.3333,
+            0.3077,
+            0.2857,
+            0.2667,
+            0.25,
+            0.2353,
+            0.2778,
+            0.3158,
+            0.35
+          ],
+          "liftCI": {
+            "lower": 0.4111,
+            "upper": 1.4389,
+            "mean": 0.9344,
+            "median": 0.925
+          },
+          "hitRateCI": {
+            "lower": 0.1,
+            "upper": 0.55,
+            "mean": 0.303,
+            "median": 0.3
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.3243,
+              "lift": 1.0792
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 20,
+              "bridged": 1,
+              "hitRate": 0.05,
+              "baseRate": 0.3243,
+              "lift": 0.1542
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.3243,
+              "lift": 1.0792
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.3243,
+              "lift": 1.0792
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.3243,
+              "lift": 1.0792
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 20,
+              "bridged": 1,
+              "hitRate": 0.05,
+              "baseRate": 0.3243,
+              "lift": 0.1542
+            },
+            {
+              "name": "field-size",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.3243,
+              "lift": 1.0792
+            },
+            {
+              "name": "full",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.3243,
+              "lift": 1.0792
+            }
+          ]
+        },
+        {
+          "current": 2020,
+          "prior": 2017,
+          "horizon": 2023,
+          "heldOut": false,
+          "calibrationWindow": true,
+          "eligible": 107,
+          "surfaced": 20,
+          "bridged": 9,
+          "hitRate": 0.45,
+          "baseRate": 0.4112,
+          "lift": 1.0943,
+          "precisionAtK": [
+            0,
+            0.5,
+            0.3333,
+            0.5,
+            0.4,
+            0.3333,
+            0.2857,
+            0.375,
+            0.3333,
+            0.4,
+            0.4545,
+            0.5,
+            0.4615,
+            0.5,
+            0.4667,
+            0.4375,
+            0.4118,
+            0.4444,
+            0.4737,
+            0.45
+          ],
+          "liftCI": {
+            "lower": 0.608,
+            "upper": 1.6174,
+            "mean": 1.0851,
+            "median": 1.07
+          },
+          "hitRateCI": {
+            "lower": 0.25,
+            "upper": 0.65,
+            "mean": 0.4466,
+            "median": 0.45
+          },
+          "baselines": [
+            {
+              "name": "random",
+              "surfaced": 20,
+              "bridged": 7,
+              "hitRate": 0.35,
+              "baseRate": 0.4112,
+              "lift": 0.8511
+            },
+            {
+              "name": "lowest-crossflow",
+              "surfaced": 20,
+              "bridged": 0,
+              "hitRate": 0,
+              "baseRate": 0.4112,
+              "lift": 0
+            },
+            {
+              "name": "highest-simgrowth",
+              "surfaced": 20,
+              "bridged": 11,
+              "hitRate": 0.55,
+              "baseRate": 0.4112,
+              "lift": 1.3375
+            },
+            {
+              "name": "highest-crossflow-growth",
+              "surfaced": 20,
+              "bridged": 18,
+              "hitRate": 0.9,
+              "baseRate": 0.4112,
+              "lift": 2.1886
+            },
+            {
+              "name": "ablation-gap-only",
+              "surfaced": 20,
+              "bridged": 11,
+              "hitRate": 0.55,
+              "baseRate": 0.4112,
+              "lift": 1.3375
+            },
+            {
+              "name": "ablation-sim-only",
+              "surfaced": 20,
+              "bridged": 0,
+              "hitRate": 0,
+              "baseRate": 0.4112,
+              "lift": 0
+            },
+            {
+              "name": "field-size",
+              "surfaced": 20,
+              "bridged": 13,
+              "hitRate": 0.65,
+              "baseRate": 0.4112,
+              "lift": 1.5807
+            },
+            {
+              "name": "full",
+              "surfaced": 20,
+              "bridged": 9,
+              "hitRate": 0.45,
+              "baseRate": 0.4112,
+              "lift": 1.0943
+            }
+          ]
+        }
+      ],
+      "pooled": {
+        "name": "pooled-held-out",
+        "surfaced": 20,
+        "bridged": 7,
+        "hitRate": 0.35,
+        "baseRate": 0.3243,
+        "lift": 1.0792
+      },
+      "successThreshold": {
+        "lowerCILift": 1.1,
+        "consecutiveWindows": 2
+      },
+      "verdict": {
+        "passed": false,
+        "state": "PENDING",
+        "reason": "only 1 held-out window(s) exist; 2 consecutive held-out windows required before a predictive claim"
+      },
+      "config": {
+        "version": "0.2.0",
+        "sampleSize": 500,
+        "windowYears": 5,
+        "topKeywords": 200,
+        "minCoverage": 0.5,
+        "minPubs": 100,
+        "minCitationGap": 0.7,
+        "minSimGrowth": 0.05,
+        "densityNorm": 0.4,
+        "topK": 20
+      }
+    }
+  },
+  "primary": {
+    "windows": [
+      {
+        "current": 2017,
+        "prior": 2014,
+        "horizon": 2020,
+        "heldOut": true,
+        "calibrationWindow": false,
+        "eligible": 37,
+        "surfaced": 20,
+        "bridged": 10,
+        "hitRate": 0.5,
+        "baseRate": 0.4595,
+        "lift": 1.0882,
+        "precisionAtK": [
+          1,
+          0.5,
+          0.3333,
+          0.25,
+          0.2,
+          0.3333,
+          0.4286,
+          0.375,
+          0.4444,
+          0.5,
+          0.4545,
+          0.5,
+          0.4615,
+          0.4286,
+          0.4667,
+          0.4375,
+          0.4118,
+          0.4444,
+          0.4737,
+          0.5
+        ],
+        "liftCI": {
+          "lower": 0.6167,
+          "upper": 1.3567,
+          "mean": 0.986,
+          "median": 0.9867
+        },
+        "hitRateCI": {
+          "lower": 0.25,
+          "upper": 0.7,
+          "mean": 0.4532,
+          "median": 0.45
+        },
+        "baselines": [
+          {
+            "name": "random",
+            "surfaced": 20,
+            "bridged": 11,
+            "hitRate": 0.55,
+            "baseRate": 0.4595,
+            "lift": 1.1971
+          },
+          {
+            "name": "lowest-crossflow",
+            "surfaced": 20,
+            "bridged": 1,
+            "hitRate": 0.05,
+            "baseRate": 0.4595,
+            "lift": 0.1088
+          },
+          {
+            "name": "highest-simgrowth",
+            "surfaced": 20,
+            "bridged": 10,
+            "hitRate": 0.5,
+            "baseRate": 0.4595,
+            "lift": 1.0882
+          },
+          {
+            "name": "highest-crossflow-growth",
+            "surfaced": 20,
+            "bridged": 11,
+            "hitRate": 0.55,
+            "baseRate": 0.4595,
+            "lift": 1.1971
+          },
+          {
+            "name": "ablation-gap-only",
+            "surfaced": 20,
+            "bridged": 10,
+            "hitRate": 0.5,
+            "baseRate": 0.4595,
+            "lift": 1.0882
+          },
+          {
+            "name": "ablation-sim-only",
+            "surfaced": 20,
+            "bridged": 1,
+            "hitRate": 0.05,
+            "baseRate": 0.4595,
+            "lift": 0.1088
+          },
+          {
+            "name": "field-size",
+            "surfaced": 20,
+            "bridged": 10,
+            "hitRate": 0.5,
+            "baseRate": 0.4595,
+            "lift": 1.0882
+          },
+          {
+            "name": "full",
+            "surfaced": 20,
+            "bridged": 10,
+            "hitRate": 0.5,
+            "baseRate": 0.4595,
+            "lift": 1.0882
+          }
+        ]
+      },
+      {
+        "current": 2020,
+        "prior": 2017,
+        "horizon": 2023,
+        "heldOut": false,
+        "calibrationWindow": true,
+        "eligible": 107,
+        "surfaced": 20,
+        "bridged": 15,
+        "hitRate": 0.75,
+        "baseRate": 0.6075,
+        "lift": 1.2346,
+        "precisionAtK": [
+          1,
+          1,
+          0.6667,
+          0.75,
+          0.8,
+          0.6667,
+          0.7143,
+          0.75,
+          0.7778,
+          0.8,
+          0.8182,
+          0.8333,
+          0.7692,
+          0.7857,
+          0.7333,
+          0.75,
+          0.7647,
+          0.7778,
+          0.7895,
+          0.75
+        ],
+        "liftCI": {
+          "lower": 0.8654,
+          "upper": 1.5286,
+          "mean": 1.2019,
+          "median": 1.2056
+        },
+        "hitRateCI": {
+          "lower": 0.5,
+          "upper": 0.9,
+          "mean": 0.7297,
+          "median": 0.75
+        },
+        "baselines": [
+          {
+            "name": "random",
+            "surfaced": 20,
+            "bridged": 11,
+            "hitRate": 0.55,
+            "baseRate": 0.6075,
+            "lift": 0.9054
+          },
+          {
+            "name": "lowest-crossflow",
+            "surfaced": 20,
+            "bridged": 1,
+            "hitRate": 0.05,
+            "baseRate": 0.6075,
+            "lift": 0.0823
+          },
+          {
+            "name": "highest-simgrowth",
+            "surfaced": 20,
+            "bridged": 16,
+            "hitRate": 0.8,
+            "baseRate": 0.6075,
+            "lift": 1.3169
+          },
+          {
+            "name": "highest-crossflow-growth",
+            "surfaced": 20,
+            "bridged": 19,
+            "hitRate": 0.95,
+            "baseRate": 0.6075,
+            "lift": 1.5638
+          },
+          {
+            "name": "ablation-gap-only",
+            "surfaced": 20,
+            "bridged": 16,
+            "hitRate": 0.8,
+            "baseRate": 0.6075,
+            "lift": 1.3169
+          },
+          {
+            "name": "ablation-sim-only",
+            "surfaced": 20,
+            "bridged": 1,
+            "hitRate": 0.05,
+            "baseRate": 0.6075,
+            "lift": 0.0823
+          },
+          {
+            "name": "field-size",
+            "surfaced": 20,
+            "bridged": 13,
+            "hitRate": 0.65,
+            "baseRate": 0.6075,
+            "lift": 1.07
+          },
+          {
+            "name": "full",
+            "surfaced": 20,
+            "bridged": 15,
+            "hitRate": 0.75,
+            "baseRate": 0.6075,
+            "lift": 1.2346
+          }
+        ]
+      }
+    ],
+    "pooled": {
+      "name": "pooled-held-out",
+      "surfaced": 20,
+      "bridged": 10,
+      "hitRate": 0.5,
+      "baseRate": 0.4595,
+      "lift": 1.0882
+    },
+    "successThreshold": {
+      "lowerCILift": 1.1,
+      "consecutiveWindows": 2
+    },
+    "verdict": {
+      "passed": false,
+      "state": "PENDING",
+      "reason": "only 1 held-out window(s) exist; 2 consecutive held-out windows required before a predictive claim"
+    },
+    "config": {
+      "version": "0.2.0",
+      "sampleSize": 500,
+      "windowYears": 5,
+      "topKeywords": 200,
+      "minCoverage": 0.5,
+      "minPubs": 100,
+      "minCitationGap": 0.7,
+      "minSimGrowth": 0.05,
+      "densityNorm": 0.4,
+      "topK": 20
+    }
+  }
+}

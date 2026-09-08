@@ -4,6 +4,12 @@ Cross-disciplinary trend & connection engine — maps **where disciplines
 connect, where they don't, and which gaps are closing fastest**. The product
 is the sparse region of the discipline×discipline matrix.
 
+> **Claim honesty:** FieldBridge maps cross-disciplinary structure and
+> generates evidence-backed hypotheses about emerging intersections. It does
+> **not** yet claim to predict them — the rolling-origin benchmark
+> (`docs/benchmark-results.md`, `public/benchmark.json`) is the gate, and it
+> currently reads **PENDING**.
+
 **Owner:** Terrence Perry · **Stack:** TypeScript + Vite (dashboard), Python
 (workers), SQLite (durable history), Supabase (upgrade path), GitHub Pages
 (deploy) · **Budget rule:** free-tier-first, $0/mo until proven value.
@@ -33,7 +39,12 @@ is the sparse region of the discipline×discipline matrix.
 - `src/lib/sqlite-store.ts` — **SQLite history store** (`data/fieldbridge.db`):
   the durable, queryable record of every run's aggregates. Zero-ops, no cloud
   dependency; the Postgres schema mirrors it 1:1 for later migration.
-- `tests/` — vitest suite (57 tests).
+- `src/lib/benchmark.ts` + `src/benchmark-run.ts` — **rolling-origin prediction
+  benchmark** (held-out windows, explicit baselines, bootstrap CIs,
+  pre-registered verdict). Output: `public/benchmark.json`.
+- `tests/` — vitest suite (77 tests), including config-provenance contract
+  tests that fail CI when a published artifact's config hash differs from the
+  runtime config.
 - `samples/selftest_snapshot.json` — synthetic fixture for running without API
   keys.
 - `public/fieldbridge-matrix.json` — the latest computed artifact (from the

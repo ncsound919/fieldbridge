@@ -25,6 +25,8 @@ export interface PairSignals {
   kwSim: number;
   /** Keyword-profile cosine at the prior period (growth baseline). */
   kwSimPrior: number;
+  /** Symmetric normalized cross-flow share at the prior period (momentum baseline). */
+  crossFlowPrior?: number;
   /** Coverage share for each field (from normalizeFlow). */
   coverage: [number, number];
   /** Sampled publication counts for each field (size guard). */

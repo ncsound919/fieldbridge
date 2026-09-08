@@ -58,13 +58,19 @@ jobs:
           --out public/validation.json
           --db data/fieldbridge.db
 
+      - name: Rolling-origin benchmark
+        run: >-
+          npm run benchmark
+          -- --snapshot python/phase1/phase1_results.json
+          --out public/benchmark.json
+
       - name: Commit artifact
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "fieldbridge-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add public/fieldbridge-matrix.json public/validation.json
+          git add public/fieldbridge-matrix.json public/validation.json public/benchmark.json
           if git diff --cached --quiet; then
             echo "no artifact changes; skipping commit and redeploy"
             exit 0

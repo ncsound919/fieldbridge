@@ -31,6 +31,7 @@ import {
   normalizeFlow,
   rankGaps,
   scorePairs,
+  trackedFlowShare,
   validate,
   type Work,
 } from "./lib/index.js";
@@ -138,10 +139,65 @@ for (const g of surfaced) {
   drilldown[g.pair] = { sharedKeywords, bridgePapers };
 }
 
+// Per-year data-quality report: sample counts, missing-abstract rate,
+// attempted/resolved refs, coverage, and untracked-resolution share.
+const dataQuality: Record<string, unknown> = {};
+for (const y of years) {
+  const st = states.get(y)!;
+  const rows = fields.map((f) => {
+    const works = snap.works[f]?.[String(y)] ?? [];
+    const missingAbstract = works.filter((w) => !w.abstract_inverted_index).length;
+    const row = st.flows[f]!;
+    const allResolved = row._total_refs_resolved;
+    const trackedResolved = row._total_refs_resolved_tracked ?? allResolved;
+    return {
+      field: f,
+      works: works.length,
+      missingAbstract,
+      abstractCoverage: works.length > 0 ? (works.length - missingAbstract) / works.length : 0,
+      attemptedRefs: row._total_refs,
+      resolvedRefs: allResolved,
+      coverage: allResolved > 0 ? row._total_refs ? row._total_refs_resolved / row._total_refs : 0 : 0,
+      untrackedShare: allResolved > 0 ? 1 - trackedResolved / allResolved : 0,
+    };
+  });
+  const med = (xs: number[]) => (xs.length ? [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)]! : 0);
+  dataQuality[String(y)] = {
+    fields,
+    summary: {
+      worksMin: med(rows.map((r) => r.works)),
+      worksMax: Math.max(...rows.map((r) => r.works)),
+      missingAbstractRate: med(rows.map((r) => r.missingAbstract / Math.max(1, r.works))),
+      coverageMed: med(rows.map((r) => r.coverage)),
+      coverageMin: Math.min(...rows.map((r) => r.coverage)),
+      untrackedShareMed: med(rows.map((r) => r.untrackedShare)),
+    },
+    perField: rows,
+  };
+}
+
+// Tracked-universe flow shares: a->b / a's references to ANY tracked field.
+// Unlike the global shares (denominator = all resolved refs, incl. untracked
+// resolutions), these always sum to 1 across the tracked fields and are not
+// confounded by taxonomy coverage.
+const trackedFlows: Record<string, Record<string, Record<string, number>>> = {};
+for (const y of years) {
+  const st = states.get(y)!;
+  const row: Record<string, Record<string, number>> = {};
+  for (const a of fields) {
+    row[a] = row[a] ?? {};
+    for (const b of fields) {
+      row[a]![b] = round4(trackedFlowShare(st.flows, a, b));
+    }
+  }
+  trackedFlows[String(y)] = row;
+}
+
 const artifact = {
   manifest: {
     engine: `fieldbridge@${ENGINE_CONFIG.version}`,
     configHash: hashObject(ENGINE_CONFIG),
+    config: ENGINE_CONFIG,
     snapshot: snapshotArg,
     works: fields.reduce((n, f) => n + Object.values(snap.works[f] ?? {}).reduce((m, w) => m + w.length, 0), 0),
     resolution: {
@@ -153,6 +209,8 @@ const artifact = {
   },
   fields,
   years,
+  dataQuality,
+  trackedFlows,
   flows: Object.fromEntries(years.map((y) => [String(y), states.get(y)!.flows])),
   per1k: norm.per1k,
   coverage: norm.coverage,

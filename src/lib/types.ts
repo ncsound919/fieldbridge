@@ -24,8 +24,16 @@ export type CitedFieldCache = Map<string, string | null>;
 export interface FlowRow extends Record<string, number> {
   /** All outbound references declared by field a's sample (resolved or not). */
   _total_refs: number;
-  /** Outbound references that resolved to a known field. */
+  /** Outbound references that resolved to a known field (any field, incl. untracked/Unknown). */
   _total_refs_resolved: number;
+  /**
+   * Outbound references that resolved to one of the TRACKED fields (the
+   * fields argument). Distinguished from `_total_refs_resolved` so a pair is
+   * never called "disconnected" because its references resolve outside the
+   * tracked universe. Present only when the matrix was built with a
+   * `fields` argument (always true for the live pipeline).
+   */
+  _total_refs_resolved_tracked?: number;
 }
 
 export type FlowMatrix = Record<string, FlowRow>;
@@ -43,4 +51,12 @@ export interface NormalizedFlow {
   per1k: Record<string, Record<string, number>>;
   coverage: CoverageMap;
   sizes: Record<string, number>;
+  /**
+   * Per-field resolution bookkeeping for the two flow-share denominators:
+   * - `allResolved`: refs resolved to ANY field.
+   * - `trackedResolved`: refs resolved to one of the tracked fields.
+   * A field's row of global shares sums to less than 1 exactly when
+   * trackedResolved < allResolved; tracked-universe shares always sum to 1.
+   */
+  resolution: Record<string, { allResolved: number; trackedResolved: number }>;
 }

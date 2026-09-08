@@ -151,6 +151,7 @@ const output = {
   manifest: {
     engine: `fieldbridge@${ENGINE_CONFIG.version}`,
     configHash: hashObject(ENGINE_CONFIG),
+    config: ENGINE_CONFIG,
     snapshot: snapshotArg,
     method: "score at (current, prior), check cross-flow at horizon; threshold sweep, base-rate reported",
     generatedAt: new Date().toISOString(),
