@@ -1,0 +1,83 @@
+name: nightly-ingest
+
+# Nightly FieldBridge pipeline: pull OpenAlex data, compute the matrix +
+# gap/trend artifact, and commit it. Free tier: ~25 min/run, well inside the
+# 2000-min/mo GitHub Actions budget.
+#
+# Requires one repo secret: OPENALEX_API_KEY (openalex.org/settings/api).
+#
+# When a Supabase project exists, extend the "Build artifact" step to also
+# upsert field_pairs/gap_signals/run_manifests (see supabase/schema.sql).
+
+on:
+  schedule:
+    - cron: "15 3 * * *" # 03:15 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install python deps
+        run: pip install -r python/phase1/requirements.txt
+
+      - name: Ingest (bounded credits)
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+        run: >-
+          python python/phase1/run.py
+          --sample 120 --years 2014,2017,2020,2023 --max-refs 800
+          --credit-cap 2500 --out python/phase1/phase1_results.json
+
+      - name: Install js deps
+        run: npm ci
+
+      - name: Compute artifact
+        run: >-
+          npm run artifact
+          -- --snapshot python/phase1/phase1_results.json
+          --out public/fieldbridge-matrix.json
+          --db data/fieldbridge.db
+
+      - name: Validate against history
+        run: >-
+          npm run validate
+          -- --snapshot python/phase1/phase1_results.json
+          --out public/validation.json
+          --db data/fieldbridge.db
+
+      - name: Commit artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "fieldbridge-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/fieldbridge-matrix.json public/validation.json
+          if git diff --cached --quiet; then
+            echo "no artifact changes; skipping commit and redeploy"
+            exit 0
+          fi
+          git commit -m "nightly ingest: $(date +%F)"
+          git push
+          # GITHUB_TOKEN pushes do not re-trigger other workflows, so
+          # explicitly redeploy Pages with the fresh artifact.
+          gh workflow run "Deploy to GitHub Pages" --ref main
+
+      - name: Archive SQLite history
+        uses: actions/upload-artifact@v4
+        with:
+          name: fieldbridge-history
+          path: data/fieldbridge.db
+          retention-days: 14

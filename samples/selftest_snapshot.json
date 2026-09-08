@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "sample_size": 4,
+    "publication_year": 2023,
+    "fields": ["Mathematics", "Biology", "Sociology", "Philosophy"]
+  },
+  "works": {
+    "Mathematics": [
+      { "id": "citing-math-1", "referenced_works": ["W-math-1", "W-math-2", "W-math-3", "W-math-4"], "abstract_inverted_index": { "theorem": [0], "proof": [1], "topology": [2] } }
+    ],
+    "Biology": [
+      { "id": "citing-bio-1", "referenced_works": ["W-bio-1", "W-bio-2", "W-bio-3", "W-soc-1"], "abstract_inverted_index": { "cell": [0], "gene": [1], "organism": [2], "tissue": [3] } }
+    ],
+    "Sociology": [
+      { "id": "citing-soc-1", "referenced_works": ["W-bio-4", "W-bio-5", "W-soc-2", "W-phi-1"], "abstract_inverted_index": { "social": [0], "network": [1], "population": [2], "cell": [3] } }
+    ],
+    "Philosophy": [
+      { "id": "citing-phi-1", "referenced_works": ["W-phi-2", "W-phi-3"], "abstract_inverted_index": { "meaning": [0], "ethics": [1], "kant": [2], "proof": [3] } }
+    ]
+  },
+  "cited_fields": {
+    "W-math-1": "Mathematics", "W-math-2": "Mathematics", "W-math-3": "Mathematics", "W-math-4": "Mathematics",
+    "W-bio-1": "Biology", "W-bio-2": "Biology", "W-bio-3": "Biology", "W-bio-4": "Biology", "W-bio-5": "Biology",
+    "W-soc-1": "Sociology", "W-soc-2": "Sociology",
+    "W-phi-1": "Philosophy", "W-phi-2": "Philosophy", "W-phi-3": "Philosophy"
+  }
+}
